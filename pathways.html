@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pathways | Your Guide to MD, DO, PA &amp; Graduate School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #2E7D6F;
+  --accent-light: #E0F2EE;
+  --accent-dark: #1B5E50;
+  --accent-glow: rgba(46,125,111,0.12);
+  --bg: #FAFAF7;
+  --card-bg: #FFFFFF;
+  --text: #2C2C2C;
+  --text-muted: #6B6B6B;
+  --border: #E8E5DE;
+  --warm: #F5F0E8;
+  --highlight: #FFF8E7;
+  --code-bg: #F4F1EB;
+  --serif: 'Crimson Pro', Georgia, serif;
+  --sans: 'Source Sans 3', 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', 'Consolas', monospace;
+  --shadow: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.1);
+  --radius: 10px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 17px; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.72;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── HERO ─── */
+.hero {
+  background: linear-gradient(135deg, #1B5E50 0%, #2E7D6F 40%, #3A9B89 100%);
+  color: white;
+  padding: 4rem 2rem 3.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.07) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 20%, rgba(255,255,255,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+.hero .subtitle {
+  font-size: 1.15rem;
+  opacity: 0.92;
+  max-width: 680px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+  position: relative;
+}
+.hero .byline {
+  font-size: 0.88rem;
+  opacity: 0.7;
+  position: relative;
+  font-style: italic;
+  font-family: var(--serif);
+}
+
+/* ─── NAV TABS ─── */
+.tab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: var(--card-bg);
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.tab-btn {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.55rem 1.1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: var(--warm);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.tab-btn:hover { border-color: var(--accent); color: var(--accent); }
+.tab-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* ─── MAIN CONTAINER ─── */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+.tab-panel { display: none; animation: fadeUp 0.4s ease; }
+.tab-panel.active { display: block; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── CARDS ─── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.3s ease;
+}
+.card:hover { box-shadow: var(--shadow-lg); }
+.card h2 {
+  font-family: var(--serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--accent-dark);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.card h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 1.4rem 0 0.6rem;
+}
+.card p {
+  margin-bottom: 0.9rem;
+}
+
+/* ─── CALLOUT BOXES ─── */
+.callout {
+  background: var(--accent-light);
+  border-left: 4px solid var(--accent);
+  padding: 1.2rem 1.4rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 1.2rem 0;
+  font-size: 0.97rem;
+}
+.callout.warm {
+  background: var(--highlight);
+  border-left-color: #D4A843;
+}
+.callout.honest {
+  background: #FFF0F0;
+  border-left-color: #C25B56;
+}
+.callout strong { color: var(--accent-dark); }
+.callout.warm strong { color: #8B6914; }
+.callout.honest strong { color: #993333; }
+
+/* ─── QUOTE ─── */
+.wisdom {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  text-align: center;
+  color: var(--accent-dark);
+  padding: 1.5rem 2rem;
+  margin: 1.5rem 0;
+  border-top: 2px solid var(--accent-light);
+  border-bottom: 2px solid var(--accent-light);
+  line-height: 1.6;
+}
+.wisdom .attribution {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: normal;
+  margin-top: 0.4rem;
+  display: block;
+}
+
+/* ─── DEFINITION BOXES ─── */
+.definition {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.3rem;
+  margin: 0.8rem 0;
+  font-size: 0.95rem;
+}
+.definition .term {
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--accent-dark);
+  font-size: 0.9rem;
+}
+.definition .meaning {
+  margin-top: 0.3rem;
+  color: var(--text);
+}
+
+/* ─── COMPARISON TABLE ─── */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+.compare-table th {
+  background: var(--accent);
+  color: white;
+  font-family: var(--sans);
+  font-weight: 600;
+  padding: 0.75rem 0.8rem;
+  text-align: left;
+  border: 1px solid var(--accent-dark);
+}
+.compare-table td {
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+.compare-table tr:nth-child(even) td { background: var(--warm); }
+.compare-table tr:hover td { background: var(--accent-light); }
+
+/* ─── GPA/MCAT GRID ─── */
+.gpa-grid {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.78rem;
+  font-family: var(--mono);
+}
+.gpa-grid th {
+  background: var(--accent-dark);
+  color: white;
+  padding: 0.5rem 0.35rem;
+  text-align: center;
+  border: 1px solid #145045;
+  font-size: 0.72rem;
+}
+.gpa-grid td {
+  padding: 0.4rem 0.35rem;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.gpa-grid .row-header {
+  background: var(--accent-light);
+  font-weight: 500;
+  text-align: left;
+  padding-left: 0.5rem;
+  white-space: nowrap;
+}
+.rate-high { background: #C8E6C9; color: #1B5E20; font-weight: 600; }
+.rate-med { background: #FFF9C4; color: #6D5E00; }
+.rate-low { background: #FFCDD2; color: #8B1A1A; }
+.rate-vlow { background: #FFEBEE; color: #B71C1C; }
+
+/* ─── SELF-REFLECTION QUESTIONS ─── */
+.reflection {
+  background: linear-gradient(135deg, var(--warm) 0%, #F9F4EC 100%);
+  border: 2px solid #D4C5A9;
+  border-radius: var(--radius);
+  padding: 1.5rem 1.8rem;
+  margin: 1.5rem 0;
+}
+.reflection h3 {
+  font-family: var(--serif);
+  color: #8B6914;
+  margin-bottom: 0.8rem;
+}
+.reflection .q {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.97rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+.reflection .q:last-child { border-bottom: none; }
+.reflection .q-num {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 500;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+/* ─── LINKS / RESOURCES ─── */
+.resource-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.93rem;
+  padding: 0.3rem 0;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+.resource-link:hover { border-bottom-color: var(--accent); }
+.resource-link::before { content: '→'; font-weight: 700; }
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.resource-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  transition: all 0.25s;
+}
+.resource-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+.resource-card .rc-title {
+  font-family: var(--sans);
+  font-weight: 700;
+  color: var(--accent-dark);
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+.resource-card .rc-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+/* ─── FAQ ACCORDION ─── */
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+  background: var(--card-bg);
+}
+.faq-q {
+  padding: 1rem 1.3rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.97rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.2s;
+  user-select: none;
+}
+.faq-q:hover { background: var(--accent-light); }
+.faq-q .arrow {
+  font-size: 1.1rem;
+  transition: transform 0.3s;
+  color: var(--accent);
+}
+.faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 1.3rem;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.faq-item.open .faq-a {
+  max-height: 800px;
+  padding: 0.5rem 1.3rem 1.2rem;
+}
+
+/* ─── TIMELINE ─── */
+.timeline {
+  position: relative;
+  padding-left: 2.5rem;
+  margin: 1.2rem 0;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.6rem;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-light));
+  border-radius: 2px;
+}
+.tl-item {
+  position: relative;
+  padding-bottom: 1.3rem;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -2.15rem;
+  top: 0.45rem;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  border: 3px solid var(--card-bg);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.tl-label {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+}
+.tl-text { font-size: 0.95rem; }
+
+/* ─── FOOTER ─── */
+.site-footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-top: 2px solid var(--border);
+  margin-top: 2rem;
+  font-family: var(--serif);
+  font-style: italic;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .hero { padding: 3rem 1.2rem 2.5rem; }
+  .tab-nav { gap: 0.35rem; padding: 0.7rem 0.8rem; }
+  .tab-btn { font-size: 0.78rem; padding: 0.4rem 0.7rem; }
+  .container { padding: 1.2rem 1rem 3rem; }
+  .card { padding: 1.4rem; }
+  .gpa-grid { font-size: 0.65rem; }
+  .gpa-grid th, .gpa-grid td { padding: 0.25rem 0.2rem; }
+  .compare-table { font-size: 0.82rem; }
+  .resources-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  html { font-size: 15px; }
+  .hero h1 { font-size: 1.7rem; }
+  .tab-btn { font-size: 0.72rem; padding: 0.35rem 0.55rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <h1>Pathways</h1>
+  <div class="subtitle">Your Honest, Supportive Guide to MD, DO, PA &amp; Biomedical Graduate School</div>
+  <div class="byline">Take a breath. Make a plan. Find your people. You have got this.</div>
+</div>
+
+<!-- ═══════════ TAB NAVIGATION ═══════════ -->
+<nav class="tab-nav" id="tabNav">
+  <button class="tab-btn active" data-tab="start">Start Here</button>
+  <button class="tab-btn" data-tab="paths">The Four Paths</button>
+  <button class="tab-btn" data-tab="numbers">Real Numbers</button>
+  <button class="tab-btn" data-tab="prepare">How to Prepare</button>
+  <button class="tab-btn" data-tab="apply">Applications</button>
+  <button class="tab-btn" data-tab="mentors">Mentors &amp; Mindset</button>
+  <button class="tab-btn" data-tab="faq">FAQ</button>
+  <button class="tab-btn" data-tab="links">Resources &amp; Links</button>
+</nav>
+
+<div class="container">
+
+<!-- ═══════════ TAB 1: START HERE ═══════════ -->
+<div class="tab-panel active" id="panel-start">
+
+<div class="card">
+<h2>Welcome. Let's Talk.</h2>
+<p>If you are reading this, you are probably thinking about a career in healthcare or biomedical science. Maybe you have known since you were twelve that you wanted to be a doctor. Maybe you just realized it last semester. Maybe you are not sure at all and someone told you that you "should go to med school" because you are smart. Whatever brought you here, you are in the right place.</p>
+
+<p>This site was built by a faculty member who has spent decades advising students just like you. The goal is simple: give you honest, clear information so you can make the best decision for <em>your</em> life. Not your parents' dream. Not what looks impressive on paper. <em>Yours.</em></p>
+
+<div class="wisdom">
+"A wise person changes their mind. A fool never does."
+<span class="attribution">-- a truth that applies to career paths, too</span>
+</div>
+
+<p>Here is the most important thing this site will tell you: <strong>it is completely OK to change your mind.</strong> You do not have to be a physician to have a meaningful, fulfilling career. There are many ways to help people, contribute to science, earn a good living, and feel proud of what you do every day. If at any point while reading this you think "maybe this is not for me," that is not failure. That is wisdom. That is self-awareness. That is a strength.</p>
+
+<p>But if you DO want it? Then commit. Make a plan. Find mentors. Put in the work. Passion without action is just daydreaming. As a wise character once said: <em>"Do or do not. There is no try."</em> If you find yourself constantly looking for reasons why it will not work, rather than pushing yourself to make it work, then pause and be honest about what you truly want. And that honesty, either way, is the first step toward a great life.</p>
+</div>
+
+<div class="card">
+<h2>Key Terms You Need to Know</h2>
+<p>Before we go any further, let's make sure we speak the same language. These terms come up constantly, and understanding them now will save you confusion later.</p>
+
+<div class="definition">
+<div class="term">MD (Doctor of Medicine)</div>
+<div class="meaning">The degree awarded by allopathic medical schools. "Allopathic" simply means conventional Western medicine. MDs can practice in any medical specialty, prescribe medications, and perform surgery. There are approximately 158 MD-granting medical schools in the U.S., accredited by the LCME (Liaison Committee on Medical Education).</div>
+</div>
+
+<div class="definition">
+<div class="term">DO (Doctor of Osteopathic Medicine)</div>
+<div class="meaning">The degree awarded by osteopathic medical schools. DOs receive the same training as MDs and can do everything an MD can do: diagnose, prescribe, perform surgery, and specialize. The key difference is that osteopathic training includes additional coursework in osteopathic manipulative treatment (OMT), a hands-on approach to musculoskeletal care. DOs and MDs are licensed identically. There are approximately 38 colleges of osteopathic medicine (with 60+ campuses) in the U.S., accredited by the COCA (Commission on Osteopathic College Accreditation). The application service is called AACOMAS.</div>
+</div>
+
+<div class="definition">
+<div class="term">PA (Physician Assistant / Physician Associate)</div>
+<div class="meaning">A licensed healthcare provider who practices medicine on a team led by or in collaboration with a physician. PAs can examine patients, diagnose conditions, prescribe medications, and assist in surgery. PA programs typically require a bachelor's degree plus clinical experience before admission, and the PA program itself is a master's degree taking about 27 months. PAs apply through CASPA (Centralized Application Service for Physician Assistants). The certifying exam is called the PANCE.</div>
+</div>
+
+<div class="definition">
+<div class="term">Biomedical Graduate School (M.S. / Ph.D.)</div>
+<div class="meaning">Graduate programs in biomedical fields such as biochemistry, pharmacology, neuroscience, molecular biology, microbiology, immunology, public health, or biomedical engineering. A Master of Science (M.S.) typically takes 2 years. A Doctor of Philosophy (Ph.D.) typically takes 4 to 7 years and focuses on original research, culminating in a dissertation. Many Ph.D. programs in biomedical sciences offer full tuition waivers and a stipend.</div>
+</div>
+
+<div class="definition">
+<div class="term">GPA (Grade Point Average)</div>
+<div class="meaning">A numerical measure of your academic performance, typically on a 4.0 scale. Medical schools look at your cumulative GPA (all courses), science GPA or BCPM (Biology, Chemistry, Physics, Math courses only), and sometimes your "trend" (whether your grades improved over time).</div>
+</div>
+
+<div class="definition">
+<div class="term">MCAT (Medical College Admission Test)</div>
+<div class="meaning">A standardized exam required by almost all MD and DO schools. It covers four sections: Chemical and Physical Foundations of Biological Systems, Critical Analysis and Reasoning Skills (CARS), Biological and Biochemical Foundations of Living Systems, and Psychological, Social, and Biological Foundations of Behavior. Scores range from 472 to 528, with a median of 500. Most competitive applicants score 508 or higher for MD schools and 500 or higher for DO schools.</div>
+</div>
+
+<div class="definition">
+<div class="term">GRE (Graduate Record Examination)</div>
+<div class="meaning">A standardized test sometimes required for PA programs (though increasingly optional) and often required for biomedical graduate school. It tests verbal reasoning, quantitative reasoning, and analytical writing.</div>
+</div>
+
+<div class="definition">
+<div class="term">AMCAS / AACOMAS / CASPA</div>
+<div class="meaning">These are centralized application services. AMCAS (American Medical College Application Service) is for MD schools. AACOMAS (American Association of Colleges of Osteopathic Medicine Application Service) is for DO schools. CASPA (Centralized Application Service for Physician Assistants) is for PA programs. Each allows you to submit one primary application to multiple schools.</div>
+</div>
+
+<div class="definition">
+<div class="term">Clinical Hours / Direct Patient Care Experience (PCE)</div>
+<div class="meaning">Hands-on time spent working directly with patients. This is measured in hours and is particularly critical for PA school applications. Activities that count include working as an EMT, medical assistant, CNA, phlebotomist, paramedic, or scribe (some programs). Shadowing a physician typically counts separately as "observation hours" rather than direct patient care.</div>
+</div>
+
+<div class="definition">
+<div class="term">MSAR (Medical School Admission Requirements)</div>
+<div class="meaning">An online database maintained by the AAMC that contains detailed admissions data for every accredited MD school: average GPA, MCAT scores, acceptance rates, tuition, and specific prerequisites. It costs about $28/year and is considered an essential tool for any serious applicant. The DO equivalent is the Choose DO Explorer on AACOM's website.</div>
+</div>
+
+<div class="definition">
+<div class="term">Holistic Review</div>
+<div class="meaning">An admissions approach where the committee evaluates the whole applicant, not just numbers. This includes experiences, personal qualities, leadership, community service, research, overcoming adversity, and demographic background. Most medical schools now describe their process as "holistic," but that does not mean numbers do not matter. It means numbers alone do not tell your whole story.</div>
+</div>
+
+<div class="definition">
+<div class="term">Primary Care Track vs. Physician-Scientist Track</div>
+<div class="meaning">Some medical schools emphasize training doctors who will see patients in underserved communities (primary care focus). Others emphasize training physician-scientists who will conduct research alongside clinical work, often through MD/Ph.D. programs. Understanding a school's mission helps you find the best fit. A school focused on producing rural family doctors will evaluate your application differently than one focused on producing NIH-funded researchers.</div>
+</div>
+</div>
+
+<div class="card">
+<h2>How to Use This Site</h2>
+<p>Use the tabs above to explore at your own pace. <strong>"The Four Paths"</strong> compares MD, DO, PA, and graduate school side by side so you can see the differences clearly. <strong>"Real Numbers"</strong> shows you actual GPA and MCAT acceptance data, so you can see where you stand and what is realistic. <strong>"How to Prepare"</strong> gives you stage-by-stage guidance, whether you are in high school or already in college. <strong>"Applications"</strong> walks through personal statements, letters of recommendation, and the mechanics of actually applying. <strong>"Mentors &amp; Mindset"</strong> is about the human side: how to find good advisors, how to manage stress, and how to be honest with yourself. <strong>"FAQ"</strong> answers the questions students ask most often. And <strong>"Resources &amp; Links"</strong> gives you direct connections to official sites.</p>
+<p>You do not have to read everything in one sitting. Come back when you need to. Bookmark this page. Share it with a friend who is going through the same thing. You are not alone in this.</p>
+</div>
+</div>
+
+<!-- ═══════════ TAB 2: THE FOUR PATHS ═══════════ -->
+<div class="tab-panel" id="panel-paths">
+
+<div class="card">
+<h2>Understanding Your Options</h2>
+<p>One of the biggest mistakes students make is treating "medical school" as the only option for a career in healthcare or biomedical science. It is not. There are multiple paths, and each one has distinct advantages depending on what you value most: patient interaction, research, lifestyle, autonomy, length of training, or scope of practice. Let's break them down honestly.</p>
+</div>
+
+<div class="card">
+<h2>Side-by-Side Comparison</h2>
+<div style="overflow-x:auto;">
+<table class="compare-table">
+<tr>
+  <th style="width:18%">Feature</th>
+  <th>MD (Allopathic)</th>
+  <th>DO (Osteopathic)</th>
+  <th>PA (Physician Assistant)</th>
+  <th>Grad School (M.S./Ph.D.)</th>
+</tr>
+<tr>
+  <td><strong>Degree</strong></td>
+  <td>Doctor of Medicine</td>
+  <td>Doctor of Osteopathic Medicine</td>
+  <td>Master of Physician Assistant Studies (or similar)</td>
+  <td>M.S. or Ph.D. in biomedical field</td>
+</tr>
+<tr>
+  <td><strong>Training Length</strong></td>
+  <td>4 years med school + 3 to 7 years residency</td>
+  <td>4 years med school + 3 to 7 years residency</td>
+  <td>~27 months (after bachelor's degree)</td>
+  <td>M.S.: 2 years; Ph.D.: 4 to 7 years</td>
+</tr>
+<tr>
+  <td><strong>Total Years After High School</strong></td>
+  <td>11 to 15+</td>
+  <td>11 to 15+</td>
+  <td>6 to 8 (including undergrad + gap year experience)</td>
+  <td>M.S.: 6; Ph.D.: 8 to 11</td>
+</tr>
+<tr>
+  <td><strong>Entrance Exam</strong></td>
+  <td>MCAT</td>
+  <td>MCAT</td>
+  <td>GRE (optional at many programs now); some accept MCAT</td>
+  <td>GRE (often optional now); some programs waive it</td>
+</tr>
+<tr>
+  <td><strong>Application Service</strong></td>
+  <td>AMCAS</td>
+  <td>AACOMAS (some also via TMDSAS in Texas)</td>
+  <td>CASPA</td>
+  <td>Directly to each university's graduate school</td>
+</tr>
+<tr>
+  <td><strong>Typical Prerequisite GPA</strong></td>
+  <td>Median matriculant ~3.86</td>
+  <td>Average matriculant ~3.62</td>
+  <td>Average accepted ~3.6 overall, ~3.5 science</td>
+  <td>Varies; 3.0+ minimum, 3.3+ competitive</td>
+</tr>
+<tr>
+  <td><strong>Clinical Hours Required</strong></td>
+  <td>Not a formal number, but most successful applicants have hundreds of hours of clinical volunteering/shadowing plus research</td>
+  <td>Similar to MD; shadowing DOs is especially valued</td>
+  <td>500 to 2,000+ direct patient care hours (varies widely by program)</td>
+  <td>Not typically required; research experience is the priority</td>
+</tr>
+<tr>
+  <td><strong>What You Can Do</strong></td>
+  <td>Full independent medical practice, all specialties, prescribe, operate, lead teams</td>
+  <td>Identical to MD plus training in OMT</td>
+  <td>Examine, diagnose, treat, prescribe; practice on a team with physician collaboration</td>
+  <td>Research, teach, industry R&amp;D, policy, consulting (no patient care unless also clinical degree)</td>
+</tr>
+<tr>
+  <td><strong>Tuition &amp; Cost</strong></td>
+  <td>Average ~$40K to $65K/year (public vs. private); total debt often $200K+</td>
+  <td>Similar to MD; average ~$50K to $60K/year</td>
+  <td>Average total ~$80K to $120K for full program</td>
+  <td>Ph.D.: usually FREE with stipend (~$30K to $38K/year); M.S.: varies, sometimes funded</td>
+</tr>
+<tr>
+  <td><strong>Lifestyle &amp; Schedule</strong></td>
+  <td>Demanding during residency; varies widely by specialty after</td>
+  <td>Same as MD</td>
+  <td>Generally more predictable schedule; flexibility to switch specialties without retraining</td>
+  <td>Flexible during training; varies by career (academia, industry, government)</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div class="card">
+<h2>Why Choose MD?</h2>
+<p>You want full autonomy in clinical practice. You want access to every specialty, from dermatology to neurosurgery. You are drawn to the idea of being the person who makes the final call on patient care. You may also be interested in academic medicine, where you combine research and teaching with clinical practice. You are willing to commit to a long training pipeline (a minimum of 7 years after college, often more), and you accept the significant financial investment. MD training opens the widest range of doors in clinical medicine, and the degree carries universal recognition worldwide.</p>
+
+<h3>Why Choose DO?</h3>
+<p>You want to be a fully licensed physician with all the same rights and capabilities as an MD, but you are also attracted to the osteopathic philosophy: treat the whole person, emphasize preventive care, and understand the musculoskeletal system deeply. DO schools also tend to have slightly lower average GPA and MCAT thresholds for admission, which does not mean they are easier, it means they may evaluate your application differently and weight clinical experience or personal story more heavily. If you want to be a primary care physician or are drawn to community-based medicine, DO programs are an excellent fit. Importantly, DOs and MDs now enter the same residency match system (since 2020), so the historical distinction in residency access has largely disappeared.</p>
+
+<h3>Why Choose PA?</h3>
+<p>You want to practice medicine, see patients, diagnose, and treat, but you want a shorter training pipeline and more flexibility. PAs can switch specialties without additional residency training. If you discover you love orthopedics after working in family medicine for five years, you can make that switch. The PA profession offers a strong salary (national median around $130K), excellent job growth, and a lifestyle that many find more sustainable than physician training. You work collaboratively as part of a medical team. If you love patient care but do not need full independent practice authority, PA may be the smartest path for you.</p>
+
+<h3>Why Choose Biomedical Graduate School?</h3>
+<p>You are fascinated by questions more than answers. You love being in the lab, designing experiments, analyzing data, and pushing the boundaries of what we know about biology and disease. You want to discover the next drug target, develop a diagnostic tool, understand how a disease works at the molecular level, or teach the next generation of scientists. A Ph.D. is the path for you if research, not patient care, is your primary drive. It is also worth noting that Ph.D. programs in the biomedical sciences are usually fully funded, meaning you get paid a stipend and do not pay tuition, which is the opposite of medical school. You can also pursue combined MD/Ph.D. programs if you truly want to do both (these are typically 7 to 8 years and also fully funded). Careers after a biomedical Ph.D. include academic professor, industry scientist, biotech entrepreneur, government researcher (NIH, CDC, FDA), science policy advisor, patent law (with additional training), medical writer, and more.</p>
+</div>
+
+<div class="card">
+<h2>The Honest Conversation About "Prestige"</h2>
+<p>Let's address this directly, because it is one of the biggest sources of stress and bad decision-making among pre-health students. Some students (and some parents) view the paths above as a hierarchy: MD at the top, then DO, then PA, then "everything else." This is wrong, and it leads people to pursue paths that do not fit them.</p>
+
+<p>A PA who loves their work, sees patients every day, earns a strong salary, and goes home to their family at a reasonable hour is not "less than" a burned-out physician who chose medicine for the wrong reasons. A Ph.D. scientist whose research leads to a new cancer treatment has contributed something extraordinary to humanity, even though they never wore a white coat in a hospital. A DO in a rural community may be the only doctor for miles, changing and saving lives daily.</p>
+
+<div class="callout warm">
+<strong>The only "right" path is the one that aligns with who you actually are,</strong> what genuinely excites you, and how you want to spend your days. Not the one that sounds most impressive at a family dinner.
+</div>
+</div>
+</div>
+
+<!-- ═══════════ TAB 3: REAL NUMBERS ═══════════ -->
+<div class="tab-panel" id="panel-numbers">
+
+<div class="card">
+<h2>The Numbers Don't Lie (But They Don't Tell the Whole Story)</h2>
+<p>You need to know these numbers because they tell you what is realistic and help you set honest goals. But remember: behind every number is a human being with a story, with strengths the numbers cannot capture, and with circumstances that context reveals. The table below is real acceptance rate data from the AAMC, aggregated from 2021 through 2023 application cycles. This is for MD (allopathic) schools only.</p>
+
+<p>How to read this table: find your approximate GPA range on the left, your MCAT score range across the top, and where they intersect is your acceptance rate. For example, a student with a 3.6 to 3.79 GPA and a 510 to 513 MCAT has about a 56.7% acceptance rate at MD schools.</p>
+</div>
+
+<div class="card">
+<h2>AAMC GPA and MCAT Acceptance Grid (MD Schools, 2021 to 2023)</h2>
+<p>This data is from AAMC Table A-23. The percentages represent acceptance rates for each GPA/MCAT combination. Colors indicate relative competitiveness.</p>
+<div style="overflow-x:auto;">
+<table class="gpa-grid">
+<tr>
+  <th>GPA \ MCAT</th>
+  <th>&lt;486</th>
+  <th>486-489</th>
+  <th>490-493</th>
+  <th>494-497</th>
+  <th>498-501</th>
+  <th>502-505</th>
+  <th>506-509</th>
+  <th>510-513</th>
+  <th>514-517</th>
+  <th>&gt;517</th>
+  <th>Total</th>
+</tr>
+<tr>
+  <td class="row-header">≥ 3.80</td>
+  <td class="rate-vlow">4.3%</td>
+  <td class="rate-vlow">3.1%</td>
+  <td class="rate-vlow">6.6%</td>
+  <td class="rate-low">18.5%</td>
+  <td class="rate-low">28.9%</td>
+  <td class="rate-med">40.2%</td>
+  <td class="rate-med">52.4%</td>
+  <td class="rate-high">66.7%</td>
+  <td class="rate-high">75.3%</td>
+  <td class="rate-high">82.9%</td>
+  <td class="rate-high">60.9%</td>
+</tr>
+<tr>
+  <td class="row-header">3.60-3.79</td>
+  <td class="rate-vlow">1.5%</td>
+  <td class="rate-vlow">1.5%</td>
+  <td class="rate-vlow">4.7%</td>
+  <td class="rate-low">13.3%</td>
+  <td class="rate-low">21.5%</td>
+  <td class="rate-med">32.0%</td>
+  <td class="rate-med">40.4%</td>
+  <td class="rate-high">56.7%</td>
+  <td class="rate-high">65.4%</td>
+  <td class="rate-high">72.4%</td>
+  <td class="rate-med">41.9%</td>
+</tr>
+<tr>
+  <td class="row-header">3.40-3.59</td>
+  <td class="rate-vlow">0.7%</td>
+  <td class="rate-vlow">0.9%</td>
+  <td class="rate-vlow">3.3%</td>
+  <td class="rate-low">11.1%</td>
+  <td class="rate-low">18.8%</td>
+  <td class="rate-low">27.9%</td>
+  <td class="rate-med">33.7%</td>
+  <td class="rate-med">45.3%</td>
+  <td class="rate-high">56.3%</td>
+  <td class="rate-high">61.4%</td>
+  <td class="rate-low">30.0%</td>
+</tr>
+<tr>
+  <td class="row-header">3.20-3.39</td>
+  <td class="rate-vlow">0.7%</td>
+  <td class="rate-vlow">1.0%</td>
+  <td class="rate-vlow">2.6%</td>
+  <td class="rate-vlow">9.2%</td>
+  <td class="rate-low">16.9%</td>
+  <td class="rate-low">26.2%</td>
+  <td class="rate-med">31.7%</td>
+  <td class="rate-med">41.0%</td>
+  <td class="rate-med">47.8%</td>
+  <td class="rate-high">56.5%</td>
+  <td class="rate-low">22.8%</td>
+</tr>
+<tr>
+  <td class="row-header">3.00-3.19</td>
+  <td class="rate-vlow">0.3%</td>
+  <td class="rate-vlow">1.3%</td>
+  <td class="rate-vlow">2.5%</td>
+  <td class="rate-vlow">7.4%</td>
+  <td class="rate-low">16.3%</td>
+  <td class="rate-low">21.9%</td>
+  <td class="rate-low">28.5%</td>
+  <td class="rate-med">34.2%</td>
+  <td class="rate-med">42.4%</td>
+  <td class="rate-med">42.6%</td>
+  <td class="rate-low">16.9%</td>
+</tr>
+<tr>
+  <td class="row-header">2.80-2.99</td>
+  <td class="rate-vlow">0.4%</td>
+  <td class="rate-vlow">1.7%</td>
+  <td class="rate-vlow">2.2%</td>
+  <td class="rate-vlow">4.9%</td>
+  <td class="rate-low">12.5%</td>
+  <td class="rate-low">22.5%</td>
+  <td class="rate-low">26.8%</td>
+  <td class="rate-med">32.7%</td>
+  <td class="rate-med">37.3%</td>
+  <td class="rate-med">32.3%</td>
+  <td class="rate-low">12.4%</td>
+</tr>
+<tr>
+  <td class="row-header">2.60-2.79</td>
+  <td class="rate-vlow">0.2%</td>
+  <td class="rate-vlow">1.1%</td>
+  <td class="rate-vlow">2.0%</td>
+  <td class="rate-vlow">5.0%</td>
+  <td class="rate-low">10.6%</td>
+  <td class="rate-low">21.5%</td>
+  <td class="rate-low">19.9%</td>
+  <td class="rate-low">23.5%</td>
+  <td class="rate-med">35.3%</td>
+  <td class="rate-med">38.5%</td>
+  <td class="rate-vlow">8.7%</td>
+</tr>
+<tr>
+  <td class="row-header">≤ 2.59</td>
+  <td class="rate-vlow">0.2%</td>
+  <td class="rate-vlow">—</td>
+  <td class="rate-vlow">1.3%</td>
+  <td class="rate-vlow">2.8%</td>
+  <td class="rate-vlow">8.0%</td>
+  <td class="rate-low">14.5%</td>
+  <td class="rate-low">24.0%</td>
+  <td class="rate-low">21.4%</td>
+  <td class="rate-low">—</td>
+  <td class="rate-low">—</td>
+  <td class="rate-vlow">4.7%</td>
+</tr>
+<tr style="font-weight:700;">
+  <td class="row-header" style="font-weight:700;">ALL</td>
+  <td>0.7%</td>
+  <td>1.3%</td>
+  <td>3.6%</td>
+  <td>11.6%</td>
+  <td>20.9%</td>
+  <td>31.9%</td>
+  <td>41.7%</td>
+  <td>57.1%</td>
+  <td>68.0%</td>
+  <td>78.1%</td>
+  <td>41.9%</td>
+</tr>
+</table>
+</div>
+<p style="font-size:0.82rem; color:var(--text-muted); margin-top:0.5rem;">Source: AAMC Table A-23, aggregated 2021-2024. <a href="https://www.aamc.org/media/6091/download" class="resource-link" style="font-size:0.82rem;">Download the original PDF</a></p>
+</div>
+
+<div class="card">
+<h2>What This Table Tells You</h2>
+<p>The overall acceptance rate for MD schools is about 42%. That means the majority of applicants are rejected, even many with strong numbers. Look at the pattern: a student with a 3.80+ GPA and a 510+ MCAT has roughly a two-in-three chance. But a student with a 3.40 GPA and a 500 MCAT has less than a one-in-five chance at MD schools. This is not meant to discourage you. It is meant to help you be strategic.</p>
+
+<div class="callout">
+<strong>Key insight:</strong> Notice that MCAT scores have enormous impact on acceptance rates within any GPA range. A student with a 3.40 to 3.59 GPA who scores above 517 on the MCAT has a 61% acceptance rate, while the same GPA with a sub-497 MCAT drops to about 5%. MCAT preparation is one of the highest-return investments you can make.
+</div>
+
+<h3>DO School Numbers</h3>
+<p>The average GPA for DO school matriculants is approximately 3.62 overall and 3.55 for science courses. The average MCAT is approximately 504 to 505. These are real, achievable numbers. DO schools tend to place heavier emphasis on clinical experience, community service, and fit with the osteopathic philosophy. If your GPA is in the 3.4 to 3.6 range and your MCAT is around 500 to 508, DO schools should be a strong part of your application strategy.</p>
+
+<h3>PA School Numbers</h3>
+<p>The average accepted PA student has approximately a 3.6 overall GPA and 3.5 science GPA. Most programs require 500 to 2,000+ hours of direct patient care experience, and competitive applicants often have well over 1,000 hours. The GRE is required by fewer than 15% of programs as of 2025. PA school acceptance rates hover around 30% overall, but vary enormously by program.</p>
+
+<h3>Graduate School Numbers</h3>
+<p>Biomedical Ph.D. programs vary widely but generally look for a GPA of 3.0 or above (3.3+ is more competitive), strong research experience (ideally 1 to 2 years in a lab), letters of recommendation from research mentors, and a clear statement of research interests. Many programs have dropped the GRE requirement. Acceptance rates vary by program prestige, from 5% at top-tier programs to 30 to 50% at others.</p>
+</div>
+
+<div class="card">
+<h2>Understanding How Different Schools Review Applications</h2>
+<p>Not all medical schools are the same, and understanding their missions is critical for building a smart school list. Here are the major categories:</p>
+
+<h3>"Doctors to See Patients" Schools (Primary Care / Community Focus)</h3>
+<p>These schools emphasize producing physicians who will practice in underserved areas, often in primary care (family medicine, internal medicine, pediatrics, OB/GYN). They tend to value clinical volunteering, community service, rural or underserved experience, and a personal narrative about wanting to serve. Examples include many state-funded medical schools and schools with explicit rural training tracks. In your application, they want to see that you have actually spent time in the communities you say you want to serve.</p>
+
+<h3>"Physician-Scientist" Schools (Research Focus)</h3>
+<p>These schools (often at major research universities) emphasize producing physicians who will also conduct biomedical research. They value strong research experience, publications, presentations, and evidence of scholarly curiosity. They may offer MD/Ph.D. programs. In your application, they want to see research productivity, a clear understanding of the scientific method, and the ability to ask good questions. Think institutions like NIH-funded academic medical centers.</p>
+
+<h3>"Balanced" Schools</h3>
+<p>Most schools fall somewhere in between, training physicians for a broad range of careers. They look for well-rounded applicants with both clinical and academic/research experiences. The majority of medical schools fall into this category.</p>
+
+<div class="callout warm">
+<strong>Strategy tip:</strong> When building your school list, read each school's mission statement carefully. If a school says "we train physicians to serve rural communities" and you have zero rural experience, that is probably not a great fit, regardless of your numbers. Conversely, if a school emphasizes research and you have two years of productive lab work, that is a signal to apply even if your GPA is slightly below their average.
+</div>
+</div>
+</div>
+
+<!-- ═══════════ TAB 4: HOW TO PREPARE ═══════════ -->
+<div class="tab-panel" id="panel-prepare">
+
+<div class="card">
+<h2>Preparation is a Marathon, Not a Sprint</h2>
+<p>The students who succeed are not necessarily the ones with the most natural talent. They are the ones who made a plan early, stayed consistent, and asked for help when they needed it. Below is a stage-by-stage guide, whether you are starting in high school or are already deep into college.</p>
+</div>
+
+<div class="card">
+<h2>If You Are in High School</h2>
+<div class="timeline">
+  <div class="tl-item">
+    <div class="tl-label">Freshman & Sophomore Year</div>
+    <div class="tl-text">Focus on building strong study habits and a genuine love of science. Take the hardest science and math courses your school offers (AP Biology, AP Chemistry, AP Physics, honors math). Earn the best grades you can, but also explore activities that show who you are as a person: volunteer at a hospital or nursing home, join clubs, develop leadership skills, read broadly. You do not need to have your entire career figured out. You need to be curious and disciplined.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-label">Junior Year</div>
+    <div class="tl-text">Start researching colleges that have strong pre-health advising, good science departments, and access to clinical volunteer opportunities. Look for schools where you can get to know your professors personally (this matters enormously for letters of recommendation later). Consider whether a large research university or a smaller college suits your learning style better. Take the SAT or ACT seriously because getting into a good-fit college is step one. If possible, shadow a physician, PA, or researcher over the summer to start understanding what these careers actually look like day to day.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-label">Senior Year & Summer Before College</div>
+    <div class="tl-text">Apply to colleges. Once accepted, start planning your first-year course schedule with pre-health requirements in mind (typically general chemistry and biology). Over the summer before college, get clinical exposure if you can: volunteer at a hospital, shadow a healthcare professional, or work as a CNA. Every hour counts and, more importantly, it helps you confirm whether you actually like being around patients and medical settings.</div>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<h2>If You Are in College</h2>
+<div class="timeline">
+  <div class="tl-item">
+    <div class="tl-label">Freshman Year</div>
+    <div class="tl-text">Take General Biology I and II and General Chemistry I and II if your background supports it. Focus on learning how to study at the college level; this is harder than high school and most students need to upgrade their approach. Visit office hours regularly. Start volunteering in a clinical setting, even if it is just a few hours a week. Join one or two organizations related to your interests (pre-med club, research club, community service). Do NOT overload yourself. A 3.9 GPA with modest extracurriculars is far better than a 3.3 GPA with a packed resume.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-label">Sophomore Year</div>
+    <div class="tl-text">Take Organic Chemistry I and II, and continue with biology electives (anatomy, physiology, genetics, microbiology). Start looking for a research lab if you are interested in MD or Ph.D. paths. Approach a professor whose work interests you and ask if you can join their lab, even as a volunteer initially. Continue accumulating clinical hours. If you are considering the PA path, start logging direct patient care hours seriously (get a job as an EMT, CNA, medical assistant, or scribe). This is also the time to build relationships with 2 to 3 professors who can write you strong, personal letters of recommendation.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-label">Junior Year</div>
+    <div class="tl-text">Complete Biochemistry, Physics I and II, and any remaining prerequisites. If you are applying to medical school, plan your MCAT timeline: most students take it in the spring of junior year or summer before senior year. Begin MCAT preparation 3 to 6 months before your test date. This is also the year to deepen your involvements rather than add new ones. Admissions committees value sustained commitment over a scattered list of one-time activities. Talk to your pre-health advisor about your school list, timeline, and any concerns about your application.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-label">Senior Year (or Growth Year)</div>
+    <div class="tl-text">Applications open in May/June for the following year's entering class. AMCAS, AACOMAS, and CASPA all have their own timelines; apply early because most schools use rolling admissions. Many successful applicants take one or more growth years to strengthen their applications with additional clinical experience, research, MCAT improvement, or personal development. A growth year is not a gap. It is an investment. About 65% of medical school matriculants did not go straight from college to medical school. They used that time to grow, and they were better for it.</div>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<h2>It Is a "Growth Year," Not a "Gap Year"</h2>
+<p>Language matters, especially the language you use about yourself. The phrase "gap year" implies a hole, a pause, something missing. But there is nothing missing about a year spent gaining 1,500 hours of clinical experience, improving your MCAT by 8 points, publishing a research paper, or simply maturing into someone who is genuinely ready for the intensity of professional school. That is not a gap. That is growth.</p>
+
+<p>About 65% of students who matriculate into medical school took at least one year between finishing college and starting medical school. Many took two or three. Some of the strongest, most focused students in any entering class are the ones who did not rush. They used that time to become better applicants and, more importantly, better future clinicians and scientists.</p>
+
+<div class="callout warm">
+<strong>Reframe it in your mind and in your conversations:</strong> "I am taking a growth year to strengthen my clinical experience and prepare for the MCAT" sounds different than "I am taking a gap year because I was not ready." They might describe the same situation, but one frames you as strategic and intentional, which is exactly what you are being.
+</div>
+
+<p>What does a productive growth year look like? It looks different for everyone, but the common thread is intentionality. You should have a plan. Maybe you work as a medical assistant or EMT full-time to accumulate patient care hours. Maybe you join a research lab as a post-baccalaureate research assistant. Maybe you take a structured MCAT prep course. Maybe you volunteer with an underserved community to build the experiences that will fuel your personal statement. Maybe you do several of these at once. The point is that you are not "waiting." You are actively building toward your goal.</p>
+
+<p>If someone, a family member, a peer, anyone, makes you feel bad about not going straight through, remember this: medical schools do not penalize growth years. They reward them. An applicant who spent a year as an EMT responding to real emergencies brings something to the table that a 22-year-old who went straight from organic chemistry to AMCAS simply cannot. Both paths are valid. But never apologize for choosing the one that makes you stronger.</p>
+</div>
+
+<div class="card">
+<h2>Courses You Should Take (Across All Paths)</h2>
+<p>Requirements vary by program, but here is the common foundation that applies to most MD, DO, and PA programs. Always verify specific prerequisites on each school's website.</p>
+
+<div style="overflow-x:auto;">
+<table class="compare-table">
+<tr>
+  <th>Course</th>
+  <th>MD/DO</th>
+  <th>PA</th>
+  <th>Grad (Biomed)</th>
+  <th>Notes</th>
+</tr>
+<tr>
+  <td>General Biology I &amp; II (with lab)</td>
+  <td>Required</td>
+  <td>Required</td>
+  <td>Required</td>
+  <td>Foundation for everything</td>
+</tr>
+<tr>
+  <td>General Chemistry I &amp; II (with lab)</td>
+  <td>Required</td>
+  <td>Required</td>
+  <td>Often required</td>
+  <td>Must include lab sections</td>
+</tr>
+<tr>
+  <td>Organic Chemistry I &amp; II (with lab)</td>
+  <td>Required</td>
+  <td>Required at many programs (sometimes I only)</td>
+  <td>Depends on subfield</td>
+  <td>Biochemistry sometimes substituted for Orgo II at some schools</td>
+</tr>
+<tr>
+  <td>Biochemistry</td>
+  <td>Required or strongly recommended</td>
+  <td>Increasingly required</td>
+  <td>Usually required</td>
+  <td>Critical for MCAT and medical school success</td>
+</tr>
+<tr>
+  <td>Physics I &amp; II (with lab)</td>
+  <td>Required</td>
+  <td>Sometimes required (check programs)</td>
+  <td>Varies</td>
+  <td>Calculus-based or algebra-based depending on school</td>
+</tr>
+<tr>
+  <td>Statistics / Biostatistics</td>
+  <td>Recommended / increasingly required</td>
+  <td>Required at many programs</td>
+  <td>Usually required</td>
+  <td>Essential for understanding research</td>
+</tr>
+<tr>
+  <td>Anatomy &amp; Physiology</td>
+  <td>Recommended (covered in med school)</td>
+  <td>Required (often I &amp; II)</td>
+  <td>Depends on focus</td>
+  <td>Very important for PA applications</td>
+</tr>
+<tr>
+  <td>Microbiology</td>
+  <td>Recommended</td>
+  <td>Required at most programs</td>
+  <td>Often required</td>
+  <td>Strengthens any health science application</td>
+</tr>
+<tr>
+  <td>Psychology / Sociology</td>
+  <td>Tested on MCAT (P/S section)</td>
+  <td>Often required</td>
+  <td>Varies</td>
+  <td>Do not skip these; the MCAT P/S section is a full quarter of the exam</td>
+</tr>
+<tr>
+  <td>English / Writing</td>
+  <td>Required at many schools</td>
+  <td>Often required</td>
+  <td>Helpful</td>
+  <td>Two semesters of English is common; strong writing matters everywhere</td>
+</tr>
+<tr>
+  <td>Genetics</td>
+  <td>Strongly recommended</td>
+  <td>Helpful</td>
+  <td>Often required</td>
+  <td>Excellent MCAT preparation</td>
+</tr>
+<tr>
+  <td>Cell Biology / Molecular Biology</td>
+  <td>Strongly recommended</td>
+  <td>Helpful</td>
+  <td>Usually required</td>
+  <td>Deepens understanding for grad school and MCAT</td>
+</tr>
+</table>
+</div>
+
+<div class="callout warm">
+<strong>A word about your major:</strong> You do NOT have to be a biology or chemistry major to go to medical school, PA school, or graduate school. You need to complete the prerequisite courses above, but your actual major can be anything: English, history, engineering, music. If you love art history and can maintain a high GPA in it while completing your science prerequisites, that makes you a more interesting applicant, not a weaker one. Choose a major you genuinely enjoy and can excel in.
+</div>
+</div>
+
+<div class="card">
+<h2>Clinical Hours: What Counts and How Much You Need</h2>
+<p>For PA programs, direct patient care experience (PCE) is non-negotiable. Common roles that qualify include: EMT or paramedic, certified nursing assistant (CNA), medical assistant, phlebotomist, patient care technician, physical therapy aide, and emergency room technician. Scribing is accepted by some programs but not all, so check carefully. Volunteering at a hospital where you transport patients or stock supplies generally does NOT count as direct patient care because you are not performing clinical tasks.</p>
+
+<p>For MD and DO applications, clinical experience is evaluated differently. There is no strict hour requirement, but you need meaningful exposure: physician shadowing (aim for 50 to 100+ hours across multiple specialties), clinical volunteering (consistent, long-term commitment to a hospital, clinic, or free clinic), and ideally some kind of patient-facing role. The key word is "meaningful." Admissions committees want to know that you understand what a physician's life actually looks like and that you chose this path with your eyes open.</p>
+
+<p>For graduate school, clinical hours are generally not required. What matters is research experience: hours in a lab, conference presentations, publications, and a genuine understanding of the research process.</p>
+
+<div class="callout">
+<strong>Track your hours from day one.</strong> Keep a spreadsheet or log with dates, locations, supervisor names, contact info, and a brief description of what you did. You will need this information for your applications, and it is much easier to record it as you go than to reconstruct it from memory two years later.
+</div>
+</div>
+</div>
+
+<!-- ═══════════ TAB 5: APPLICATIONS ═══════════ -->
+<div class="tab-panel" id="panel-apply">
+
+<div class="card">
+<h2>The Personal Statement</h2>
+<p>This is the single most important piece of writing in your application, and most students agonize over it more than they need to. Here is what admissions committees want: they want to understand WHY you want to do this and WHO you are as a person. They do not want a chronological autobiography. They do not want a list of your accomplishments (that is what the rest of the application is for). They want a narrative that reveals something genuine about you.</p>
+
+<h3>What Works</h3>
+<p>Start with a specific moment or experience that crystallized your desire to pursue this path. It does not have to be dramatic. Maybe you watched a PA calmly explain a diagnosis to a frightened elderly patient and thought, "that is what I want to do." Maybe you were in a research lab and had a moment of genuine excitement when an experiment worked after weeks of failure. Whatever it is, make it real and specific. Then connect that moment to the bigger picture: why medicine (or PA, or research), why now, and what kind of practitioner or scientist you want to become. Weave in your experiences naturally as evidence, not as a laundry list.</p>
+
+<h3>What Does Not Work</h3>
+<p>Do not start with "ever since I was five years old, I wanted to be a doctor." Even if it is true, it is a cliche that immediately blends you in with thousands of other applicants. Do not write about how you want to "help people" without explaining specifically what that means to you and why medicine (as opposed to teaching, social work, nursing, or any other helping profession) is your path. Do not name-drop prestigious experiences without reflecting on what they taught you. Do not use the personal statement to explain weaknesses in your application (there are usually other places for that, such as secondary essays or an addendum). And do not try to sound like someone you are not. Authenticity is your most powerful tool.</p>
+
+<div class="callout">
+<strong>Start early, revise often.</strong> Write a first draft at least 3 to 4 months before your submission deadline. Show it to your pre-health advisor, a trusted professor, and a friend who writes well. Incorporate their feedback. Then revise again. The best personal statements go through 5 to 10 drafts. This is normal.
+</div>
+</div>
+
+<div class="card">
+<h2>Letters of Recommendation</h2>
+<p>Strong letters can make or break your application, and yet most students approach them as an afterthought. Here is how to do it right.</p>
+
+<h3>How to Get Great Letters from Professors</h3>
+<p>Step one is to build a genuine relationship BEFORE you need to ask. Go to office hours, not just when you need help with an assignment, but to discuss the material, ask questions about the professor's research, or talk about your career interests. Do this consistently over at least one semester, ideally two. When a professor knows you as a person, not just a name on a grade sheet, their letter will be specific, enthusiastic, and compelling.</p>
+
+<p>Step two is to ask the right way. When you are ready (typically at least 6 to 8 weeks before your letter is due), approach the professor in person or during office hours. Say something like: "I am applying to [medical school / PA school / graduate school] and I was hoping you might be willing to write me a strong letter of recommendation. I really valued our interactions in [specific class or research setting], and I think you could speak to [specific qualities like work ethic, intellectual curiosity, ability to work with others]." Notice the key word: STRONG. This gives the professor an easy out if they do not feel they can write you an excellent letter. A lukewarm letter is worse than no letter at all.</p>
+
+<p>Step three is to make it easy for them. Give them your resume, personal statement draft, a list of your experiences and goals, and a brief summary of what you hope they can highlight. Include all deadlines and submission instructions clearly. Send a polite reminder one to two weeks before each deadline.</p>
+
+<h3>What Not to Do</h3>
+<p>Do not ask a professor who barely knows you, even if you got an A in their class. A generic letter that says "Student X earned an A and attended class regularly" does nothing for your application. Do not wait until the last minute to ask. Do not ask via a hasty email with no context. And do not forget to send a thank-you note afterward, regardless of the outcome. These people are doing you a significant favor.</p>
+
+<div class="callout warm">
+<strong>For PA applicants specifically:</strong> You will also need letters from clinical supervisors who can speak to your patient care skills. Build these relationships the same way: be reliable, be engaged, ask good questions, and demonstrate genuine interest in the work.
+</div>
+</div>
+
+<div class="card">
+<h2>Building Your School List</h2>
+<p>Do not apply to 40 schools randomly. Be strategic. Use the MSAR (for MD schools), the Choose DO Explorer (for DO schools), or the PAEA Program Directory (for PA programs) to research each school's mission, average admitted student profile, specific prerequisites, and geographic preferences. Build a balanced list:</p>
+
+<p><strong>"Target" schools</strong> are those where your GPA and MCAT/GRE fall within or close to the school's average range, and where your experiences align with their mission. These should make up about half your list.</p>
+
+<p><strong>"Reach" schools</strong> are those where your numbers are below average but your experiences, story, or background give you a plausible case. Apply to a few, but be realistic.</p>
+
+<p><strong>"Safety" schools (or "likely" schools)</strong> are those where your numbers are above their averages and your profile is a strong fit. Do not skip these. Every year, students with excellent applications get rejected from every school because they only applied to reaches.</p>
+
+<p>For MD schools, a typical application list is 15 to 25 schools. For DO, 5 to 15 schools. For PA, 8 to 15 programs. For graduate school, 5 to 10 programs. These numbers will vary based on your competitiveness and financial situation (application fees add up quickly).</p>
+</div>
+
+<div class="card">
+<h2>Common Application Mistakes</h2>
+<p>Here are the errors that derail applicants every year:</p>
+
+<p><strong>Applying too late.</strong> Most programs use rolling admissions, which means they review applications as they come in and fill seats progressively. An application submitted in June is reviewed months before one submitted in September. Early is better. Aim to submit your primary application the first week it opens.</p>
+
+<p><strong>Ignoring secondary essays.</strong> After your primary application, most MD and DO schools send you secondary (supplemental) applications with school-specific essay prompts. Respond to these within two weeks. Pre-write them if possible by researching common secondary prompts before they arrive.</p>
+
+<p><strong>Cookie-cutter personal statements.</strong> If your personal statement could be written by any pre-med student, it is not good enough. Make it unmistakably yours.</p>
+
+<p><strong>Not enough clinical exposure.</strong> This is especially deadly for PA applications, where hours are tracked numerically, but it matters for MD and DO too. "I want to be a doctor but I have never spent time in a clinical setting" is a red flag.</p>
+
+<p><strong>Applying to schools that do not fit.</strong> Sending your application to a school whose mission, location, and culture do not match your profile is a waste of time and money. Do your research.</p>
+
+<p><strong>Not preparing for interviews.</strong> If you get an interview, you are in serious contention. Do not blow it by walking in unprepared. Practice with mock interviews, research the school thoroughly, and be ready to discuss your experiences thoughtfully. Know why you want to attend THAT specific school.</p>
+</div>
+</div>
+
+<!-- ═══════════ TAB 6: MENTORS & MINDSET ═══════════ -->
+<div class="tab-panel" id="panel-mentors">
+
+<div class="card">
+<h2>Find Your People</h2>
+<p>One of the most important things you will do on this journey is build a network of mentors and trusted advisors. You cannot (and should not) do this alone. A good mentor will not make decisions for you, but they will listen, share their experience, ask you the right questions, and help you see angles you might have missed.</p>
+
+<p>Here is the thing about mentors: you probably need more than one. No single person has all the knowledge, experience, and perspective you need. Your organic chemistry professor might be brilliant at explaining how to study for the MCAT but may know nothing about PA school admissions. Your uncle who is a physician might give great career advice but may not understand what it is like to be a first-generation college student navigating financial aid. Your older cousin who recently went through the application process might be the best person to talk to about the emotional side of things.</p>
+
+<div class="callout warm">
+<strong>Collect mentors.</strong> Each one has different knowledge, talents, and gifts. A professor for academic guidance. A clinician for career reality. A family member or friend for emotional support. A peer who is going through the same process. Build your team.
+</div>
+
+<h3>Who to Look For</h3>
+<p>A faculty member you trust and who knows you well. This should be someone you have taken a class with or worked with in research, someone who will be honest with you even when the truth is hard to hear. Your university's pre-health advisor if your school has one. An older student or recent graduate who successfully navigated the path you are considering. A family member or family friend in a healthcare or science career, someone with good judgment who genuinely cares about your wellbeing. If you do not have any of these in your life right now, that is OK. Start building those relationships today. Go to office hours. Join a club. Reach out to an alumni mentor program.</p>
+
+<h3>What a Good Mentor Does (and Does Not Do)</h3>
+<p>A good mentor listens more than they talk. They ask you questions that help you think more clearly. They share their own experiences, including their failures and regrets, honestly. They tell you hard truths with kindness. They encourage you but do not sugarcoat reality. They respect your autonomy and never pressure you into a specific path. They follow up and check in on you.</p>
+
+<p>A good mentor does NOT make your decisions for you. They do not dismiss your concerns or feelings. They do not project their own unfulfilled ambitions onto you. And they do not only show up when things are going well.</p>
+</div>
+
+<div class="card">
+<h2>The Mindset Conversation</h2>
+
+<div class="wisdom">
+"Passion is nothing without action."
+</div>
+
+<p>Let's be direct. Wanting to be a doctor (or a PA or a scientist) is not enough. You have to be willing to do the work. Not just the fun parts. Not just the inspiring parts. The grinding, unglamorous, sometimes boring parts too. Studying organic chemistry on a Friday night when your friends are going out. Waking up early to volunteer at the hospital before class. Spending months on an MCAT prep schedule. Writing and rewriting your personal statement.</p>
+
+<p>If you find yourself doing these things, even when they are hard, even when you are tired, even when progress feels slow, that tells you something important. It tells you this matters to you. It tells you that your desire is not just a wish but a commitment.</p>
+
+<p>But if you consistently find yourself avoiding the work, making excuses, blaming circumstances, or looking for shortcuts, then pause. Be honest. That does not make you a bad person. It might mean that this particular path is not the right one for you, and discovering that is a gift, not a failure. Redirect that energy toward something that DOES light you up, something where the hard work feels worth it.</p>
+
+<div class="callout honest">
+<strong>The honest truth:</strong> Not everyone who wants to be a doctor should be a doctor. Not because they are not smart enough, but because some people want the identity ("I'm a doctor") more than the reality (the years of training, the emotional toll, the lifestyle). There is no shame in recognizing that. The shame would be in spending a decade and $300,000 chasing something that does not actually make you happy.
+</div>
+
+<h3>It Is OK.</h3>
+<p>It is OK to change your mind. It is OK to take a growth year (or two). It is OK to start as pre-med and switch to a different path. It is OK to realize your true passion is research, or teaching, or public health, or something entirely outside of healthcare. It is OK to not have it all figured out at 20. Most people do not. The students who end up happiest are the ones who were honest with themselves along the way.</p>
+
+<p>You do not have to be a doctor to be "successful." You do not have to be a doctor to help people. You do not have to be a doctor to make your family proud. There are countless ways to build a meaningful life and career. Find the one that fits YOU.</p>
+</div>
+
+<div class="card">
+<h2>Managing the Stress</h2>
+<p>The pre-health journey is genuinely stressful. The competition is real. The stakes feel enormous. And social media makes it worse, because you are constantly comparing yourself to people who post their acceptances but not their rejections. Here are some things that actually help:</p>
+
+<p><strong>Talk about it.</strong> Do not bottle up your anxiety. Talk to your mentors, your friends, your family, a counselor at your university's counseling center. Verbalizing your stress reduces its power over you. You are not being weak by asking for help. You are being smart.</p>
+
+<p><strong>Control what you can control.</strong> You cannot control how many seats a medical school has. You cannot control who else is applying. You CAN control how hard you study, how much clinical experience you get, how well you write your personal statement, and how many schools you apply to. Focus there.</p>
+
+<p><strong>Take care of your body.</strong> Sleep, exercise, and nutrition are not luxuries. They are the foundation of cognitive performance. A student who sleeps 7 hours, exercises regularly, and eats well will outperform a student who pulls all-nighters and lives on caffeine and fast food, every time, over the long haul.</p>
+
+<p><strong>Keep perspective.</strong> This process is a chapter of your life, not the whole book. People get into medical school at 22, at 28, at 35, at 45. There is no single "right" timeline. Your worth as a human being is not determined by your MCAT score or which school you attend. Believe that.</p>
+
+<p><strong>Celebrate small wins.</strong> You aced that biochemistry exam? Celebrate. You finished 100 hours of clinical volunteering? Celebrate. You submitted your application? Celebrate. The big goal is important, but the journey is made up of small victories, and acknowledging them keeps you going.</p>
+</div>
+
+<div class="card">
+<h2>Questions to Ask Yourself</h2>
+<p>Grab a notebook or open a blank document. Sit somewhere quiet. Answer these questions honestly. There is no grade, no audience, no right answer. Just you and your thoughts.</p>
+
+<div class="reflection">
+<h3>Self-Reflection for Your Path Forward</h3>
+<div class="q"><span class="q-num">01</span> When I imagine my daily life in 10 years, what does it look like? Am I seeing patients? Am I in a lab? Am I teaching? Am I in an office? Be specific.</div>
+<div class="q"><span class="q-num">02</span> What part of healthcare or science genuinely excites me? Is it the patient interaction? The problem-solving? The research? The teamwork? Something else?</div>
+<div class="q"><span class="q-num">03</span> Am I pursuing this path because I want it, or because someone else wants it for me?</div>
+<div class="q"><span class="q-num">04</span> How do I feel about the length of training? Am I truly willing to commit 7 to 15 years of my life to becoming a practicing physician? Or would I prefer to be working in 2 to 3 years?</div>
+<div class="q"><span class="q-num">05</span> Am I comfortable with significant student debt, or is a funded path (like a Ph.D. with stipend) more realistic for my financial situation?</div>
+<div class="q"><span class="q-num">06</span> Have I spent real time in the environments where these professionals work? Have I shadowed a physician, worked alongside a PA, visited a research lab, talked to a graduate student?</div>
+<div class="q"><span class="q-num">07</span> When things get hard academically, do I push through and find solutions, or do I look for reasons to quit? Be honest.</div>
+<div class="q"><span class="q-num">08</span> Do I want to work independently (full autonomy over patient decisions), collaboratively (as part of a physician-led team), or primarily in a non-clinical capacity (research, industry, policy)?</div>
+<div class="q"><span class="q-num">09</span> What does "success" mean to me? Is it a title? A salary? The feeling of helping someone? Intellectual satisfaction? Freedom and flexibility? Something else?</div>
+<div class="q"><span class="q-num">10</span> Who in my life can I talk to honestly about this decision? Do I have a mentor, advisor, or trusted person who will tell me the truth, not just what I want to hear?</div>
+<div class="q"><span class="q-num">11</span> If I were not accepted to any program on my first try, would I try again? If the answer is an immediate yes, that tells you something. If you hesitate, that tells you something too.</div>
+<div class="q"><span class="q-num">12</span> Is there something else I am passionate about that I have not fully explored because I feel "locked in" to the pre-health path? Give yourself permission to think about it.</div>
+</div>
+</div>
+</div>
+
+<!-- ═══════════ TAB 7: FAQ ═══════════ -->
+<div class="tab-panel" id="panel-faq">
+
+<div class="card">
+<h2>Frequently Asked Questions</h2>
+<p>These are the questions students ask most often. Click any question to see the answer.</p>
+
+<div class="faq-item">
+<div class="faq-q">Is a DO a "real" doctor? <span class="arrow">▼</span></div>
+<div class="faq-a">Yes, absolutely. A DO is a fully licensed physician who can do everything an MD can do: diagnose, prescribe, perform surgery, and specialize in any field. DOs and MDs take the same licensing exams (USMLE and COMLEX), enter the same residency match system, and are recognized identically by hospitals, insurance companies, and patients. The only meaningful difference is that DOs receive additional training in osteopathic manipulative treatment (OMT). The idea that DOs are "lesser" doctors is outdated and simply incorrect.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">Can I get into medical school with a low GPA? <span class="arrow">▼</span></div>
+<div class="faq-a">It depends on how low and what else your application offers. Look at the AAMC table on the "Real Numbers" tab. Students with a 3.0 to 3.19 GPA who score above 510 on the MCAT still have acceptance rates of 34 to 43% at MD schools. DO schools tend to be somewhat more forgiving of lower GPAs if your MCAT is solid and your clinical experience is strong. If your GPA is below 3.0, consider a post-baccalaureate program or a Special Master's Program (SMP) to demonstrate that you can handle rigorous coursework. Also consider DO schools, which may weigh your whole-person profile more heavily. A low GPA does not disqualify you automatically, but it does mean you need to be strategic and realistic about your school list.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">Should I take a "growth year" before applying? <span class="arrow">▼</span></div>
+<div class="faq-a">For many students, absolutely yes. About 65% of medical school matriculants took at least one year between college and medical school. We prefer the term "growth year" because that is exactly what it is: a year (or two) where you grow. You gain clinical experience, strengthen your MCAT score, conduct research, mature as a person, and enter your program more confident, focused, and competitive. There is nothing "gap" about that. The word "gap" implies something is missing, when in reality you are building something. A growth year is not a sign of weakness. It is often a sign of wisdom and strategy. Use it intentionally.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">What is the difference between shadowing and clinical experience? <span class="arrow">▼</span></div>
+<div class="faq-a">Shadowing means observing a healthcare professional at work. You watch, you learn, you ask questions, but you do not perform any clinical tasks. This is important for understanding what a career in medicine looks like day to day. Clinical experience (or direct patient care experience) means you are actively involved in patient care: taking vitals, drawing blood, performing CPR, assisting with procedures, transporting patients, or other hands-on activities. For PA school, direct patient care hours are specifically required and tracked. For MD/DO school, both shadowing and clinical experience are expected, but the distinction is less formalized.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">How important is research for medical school? <span class="arrow">▼</span></div>
+<div class="faq-a">It depends on the type of school you are targeting. For research-intensive schools and MD/Ph.D. programs, research is essentially required. For primary-care-focused schools, it is less critical but still a strong addition. For DO schools, research is valued but not typically required. For PA school, research is a nice extra but far less important than clinical hours. For biomedical graduate school, research is the single most important part of your application. As a general rule: if you enjoy research, do it. If you do not, focus your energy on clinical experiences and community service instead.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">Can I switch from pre-med to PA (or vice versa) partway through college? <span class="arrow">▼</span></div>
+<div class="faq-a">Yes, and many students do. The prerequisite coursework for MD/DO and PA overlaps significantly (biology, chemistry, anatomy, physiology, biochemistry). The main difference is that PA programs require substantial direct patient care hours, so if you are switching from pre-med to PA, start accumulating those hours immediately. If you are switching from PA to MD/DO, you will need to take the MCAT and may need to add a few courses (like physics or organic chemistry II). Switching is not starting over. It is adjusting direction.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">Do I need to major in biology or chemistry? <span class="arrow">▼</span></div>
+<div class="faq-a">No. You need to complete the prerequisite courses, but your major can be anything. Data from the AAMC shows that humanities and social science majors have comparable (and sometimes higher) acceptance rates to biological science majors, likely because they tend to have higher GPAs and bring unique perspectives to their applications. Major in whatever you love and can excel in. Just make sure you also complete the required science courses.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">How do I pay for medical school? <span class="arrow">▼</span></div>
+<div class="faq-a">Most medical students use a combination of federal student loans (Direct Unsubsidized and Grad PLUS loans), scholarships, and personal savings. The average medical school debt for the class of 2023 was approximately $200,000. Some students qualify for service-based loan forgiveness programs like the National Health Service Corps (NHSC) or the Public Service Loan Forgiveness (PSLF) program. Military scholarship programs (HPSP) will pay for medical school in exchange for service commitment. Some states offer loan repayment for physicians who practice in underserved areas. Financial aid offices at medical schools can guide you through the specifics.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">I want to help people but I am not sure medicine is right for me. What else is there? <span class="arrow">▼</span></div>
+<div class="faq-a">There are many professions dedicated to helping people that do not require medical school: nursing (RN, NP), physical therapy, occupational therapy, public health (MPH), genetic counseling, social work, clinical psychology, health administration, biomedical engineering, pharmaceutical science, global health, health policy, medical education, and more. Each of these fields offers meaningful work, good career prospects, and the satisfaction of making a real difference. Do not let a narrow definition of "success" prevent you from exploring paths that might be a better fit for your interests and strengths.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">What if I do not get in on my first try? <span class="arrow">▼</span></div>
+<div class="faq-a">Many successful physicians were not accepted on their first application cycle. If you are not accepted, ask the schools that rejected you for feedback on your application. Identify your weak areas honestly: was it GPA, MCAT, clinical experience, or the personal statement? Then spend a year strengthening those areas and reapply. A reapplication that shows genuine improvement is viewed very favorably by admissions committees. Persistence, when combined with real self-improvement, is one of the strongest qualities a future physician can demonstrate.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">How do I know if I should apply to MD, DO, or both? <span class="arrow">▼</span></div>
+<div class="faq-a">If your GPA is above 3.7 and your MCAT is above 510, you are competitive at both MD and DO schools, and many students apply to both to maximize their chances. If your GPA is in the 3.4 to 3.6 range and your MCAT is 500 to 510, DO schools should be a significant part of your strategy, though you can still include MD schools where your profile fits. If your GPA is below 3.4 or your MCAT is below 500, focus heavily on DO schools (and consider whether PA or graduate school might be a better fit). The most important thing is to apply broadly and strategically, not to limit yourself based on prestige.</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-q">What are post-baccalaureate and Special Master's Programs (SMP)? <span class="arrow">▼</span></div>
+<div class="faq-a">A post-baccalaureate pre-med program is designed for students who need to complete prerequisite courses after earning their bachelor's degree, either because they changed career paths or need to improve their academic record. A Special Master's Program (SMP) is a more intensive option, usually a one-year graduate program where you take medical-school-level courses alongside first-year medical students. SMPs are designed to demonstrate that you can handle the rigor of medical school. Strong performance in an SMP can significantly improve your chances, especially if your undergraduate GPA was weak. Some SMPs have linkage agreements with their affiliated medical school, meaning that strong performance guarantees an interview or admission.</div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════════ TAB 8: RESOURCES & LINKS ═══════════ -->
+<div class="tab-panel" id="panel-links">
+
+<div class="card">
+<h2>Official Resources and Links</h2>
+<p>These are the real, official sites you should be using. Bookmark them. Visit them regularly. They are updated frequently and are the most reliable sources of information.</p>
+
+<h3>For MD (Allopathic Medical School)</h3>
+<div class="resources-grid">
+  <div class="resource-card">
+    <div class="rc-title">AAMC (Association of American Medical Colleges)</div>
+    <div class="rc-desc">The central organization for MD medical education. Home of AMCAS, MCAT registration, and MSAR.</div>
+    <a href="https://www.aamc.org" target="_blank" class="resource-link">aamc.org</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">MSAR (Medical School Admission Requirements)</div>
+    <div class="rc-desc">Searchable database of every MD school's admissions stats, prerequisites, and tuition. Essential tool ($28/year).</div>
+    <a href="https://mec.aamc.org/msar-ui/" target="_blank" class="resource-link">MSAR Database</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">AMCAS Application</div>
+    <div class="rc-desc">The centralized application for MD schools. Opens in late May each year.</div>
+    <a href="https://students-residents.aamc.org/applying-medical-school-amcas/applying-medical-school-amcas" target="_blank" class="resource-link">AMCAS Info</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">AAMC GPA/MCAT Grid (Table A-23)</div>
+    <div class="rc-desc">The acceptance rate table by GPA and MCAT ranges, referenced in the "Real Numbers" tab above.</div>
+    <a href="https://www.aamc.org/media/6091/download" target="_blank" class="resource-link">Download PDF</a>
+  </div>
+</div>
+
+<h3>For DO (Osteopathic Medical School)</h3>
+<div class="resources-grid">
+  <div class="resource-card">
+    <div class="rc-title">AACOM (American Association of Colleges of Osteopathic Medicine)</div>
+    <div class="rc-desc">Central organization for DO medical education, including the application service AACOMAS.</div>
+    <a href="https://www.aacom.org" target="_blank" class="resource-link">aacom.org</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">Choose DO Explorer</div>
+    <div class="rc-desc">Searchable database of DO schools, similar to MSAR but for osteopathic programs.</div>
+    <a href="https://choosedo.org/explorer/" target="_blank" class="resource-link">Choose DO Explorer</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">AACOMAS Application</div>
+    <div class="rc-desc">The centralized application for DO schools. Opens in early May each year.</div>
+    <a href="https://www.aacom.org/become-a-doctor/apply-to-medical-school" target="_blank" class="resource-link">AACOMAS Info</a>
+  </div>
+</div>
+
+<h3>For PA (Physician Assistant)</h3>
+<div class="resources-grid">
+  <div class="resource-card">
+    <div class="rc-title">AAPA (American Academy of Physician Associates)</div>
+    <div class="rc-desc">National professional organization for PAs. Great resource for understanding the profession.</div>
+    <a href="https://www.aapa.org" target="_blank" class="resource-link">aapa.org</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">PAEA (Physician Assistant Education Association)</div>
+    <div class="rc-desc">Program directory and admissions data for PA schools nationwide.</div>
+    <a href="https://paeaonline.org" target="_blank" class="resource-link">paeaonline.org</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">CASPA Application</div>
+    <div class="rc-desc">The centralized application for PA programs. Opens in late April each year.</div>
+    <a href="https://caspa.liaisoncas.com" target="_blank" class="resource-link">CASPA Portal</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">ARC-PA (Accreditation Review Commission)</div>
+    <div class="rc-desc">Verify that any PA program you are considering is accredited.</div>
+    <a href="https://www.arc-pa.org" target="_blank" class="resource-link">arc-pa.org</a>
+  </div>
+</div>
+
+<h3>For Biomedical Graduate School</h3>
+<div class="resources-grid">
+  <div class="resource-card">
+    <div class="rc-title">NIH NIGMS Training Programs</div>
+    <div class="rc-desc">Information about NIH-funded training grants (T32) that fund graduate students in biomedical research.</div>
+    <a href="https://www.nigms.nih.gov/training" target="_blank" class="resource-link">NIGMS Training</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">NSF GRFP (Graduate Research Fellowship)</div>
+    <div class="rc-desc">A prestigious 3-year fellowship for graduate students in STEM fields. Pays stipend and tuition.</div>
+    <a href="https://www.nsfgrfp.org" target="_blank" class="resource-link">NSF GRFP</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">AAMC MD-PhD Program Directory</div>
+    <div class="rc-desc">For students interested in combined physician-scientist training (typically fully funded).</div>
+    <a href="https://students-residents.aamc.org/md-phd-dual-degree-training/md-phd-dual-degree-training" target="_blank" class="resource-link">MD-PhD Programs</a>
+  </div>
+</div>
+
+<h3>Test Preparation</h3>
+<div class="resources-grid">
+  <div class="resource-card">
+    <div class="rc-title">MCAT Official Prep (AAMC)</div>
+    <div class="rc-desc">Official AAMC practice materials, question packs, and full-length practice exams. Start here.</div>
+    <a href="https://students-residents.aamc.org/prepare-mcat-exam/prepare-mcat-exam" target="_blank" class="resource-link">AAMC MCAT Prep</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">Khan Academy MCAT Resources</div>
+    <div class="rc-desc">Free MCAT preparation videos covering all content areas, developed in partnership with AAMC.</div>
+    <a href="https://www.khanacademy.org/test-prep/mcat" target="_blank" class="resource-link">Khan Academy MCAT</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">ETS GRE Official Site</div>
+    <div class="rc-desc">Registration, preparation materials, and score information for the GRE.</div>
+    <a href="https://www.ets.org/gre" target="_blank" class="resource-link">GRE at ETS</a>
+  </div>
+</div>
+
+<h3>Financial Aid and Scholarships</h3>
+<div class="resources-grid">
+  <div class="resource-card">
+    <div class="rc-title">FAFSA (Free Application for Federal Student Aid)</div>
+    <div class="rc-desc">Required for federal loans and most institutional financial aid. File this every year.</div>
+    <a href="https://studentaid.gov/h/apply-for-aid/fafsa" target="_blank" class="resource-link">FAFSA Application</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">AAMC Financial Aid Resources</div>
+    <div class="rc-desc">Information specific to medical school financial aid, loan repayment, and scholarships.</div>
+    <a href="https://students-residents.aamc.org/financial-aid-resources/financial-aid-resources" target="_blank" class="resource-link">AAMC Financial Aid</a>
+  </div>
+  <div class="resource-card">
+    <div class="rc-title">NHSC Scholarship Program</div>
+    <div class="rc-desc">Full scholarship for medical/PA/NP students who commit to practicing in underserved areas.</div>
+    <a href="https://nhsc.hrsa.gov/scholarships" target="_blank" class="resource-link">NHSC Scholarships</a>
+  </div>
+</div>
+</div>
+
+<div class="card">
+<h2>One Last Thing</h2>
+<p>Wherever this journey takes you, remember that the path itself is valuable. The discipline you build studying for the MCAT, the empathy you develop volunteering with patients, the resilience you gain from setbacks, these qualities serve you regardless of what initials end up after your name. You are not defined by an acceptance letter. You are defined by the kind of person you choose to be every day.</p>
+
+<p>Keep talking. Keep asking questions. Keep showing up. And when you need help, ask for it. A good mentor will understand, and they will want to guide you. They cannot choose for you, but they will listen, they will advise, and they will be in your corner.</p>
+
+<div class="wisdom">
+"The only person you need to be better than is the person you were yesterday."
+</div>
+
+<p>You have got this. Now go make your plan.</p>
+</div>
+</div>
+
+</div> <!-- end .container -->
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<div class="site-footer">
+  Built with care as an educational resource. Verify all information with official sources before making decisions.<br>
+  Information current as of 2025. Admissions data and requirements change regularly.
+</div>
+
+<!-- ═══════════ JAVASCRIPT ═══════════ -->
+<script>
+// Tab switching
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabPanels = document.querySelectorAll('.tab-panel');
+
+tabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    tabBtns.forEach(b => b.classList.remove('active'));
+    tabPanels.forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + target).classList.add('active');
+    window.scrollTo({ top: document.querySelector('.tab-nav').offsetTop - 10, behavior: 'smooth' });
+  });
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(fi => fi.classList.remove('open'));
+    // Toggle clicked
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
