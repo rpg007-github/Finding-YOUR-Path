@@ -322,7 +322,7 @@ body {
   transition: border-color 0.2s;
 }
 .resource-link:hover { border-bottom-color: var(--accent); }
-.resource-link::before { content: '<span aria-hidden="true">→</span>'; font-weight: 700; }
+.resource-link::before { content: '→'; font-weight: 700; }
 
 .resources-grid {
   display: grid;
@@ -363,10 +363,15 @@ body {
   background: var(--card-bg);
 }
 .faq-q {
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
   padding: 1rem 1.3rem;
   font-family: var(--sans);
   font-weight: 600;
   font-size: 0.97rem;
+  color: var(--text);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -494,10 +499,82 @@ body {
   top: 0;
 }
 
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Disclaimer banner ─── */
+.disclaimer-banner {
+  background: linear-gradient(135deg, #f5f2eb, #faf7f2);
+  border-bottom: 1px solid var(--border);
+}
+.disclaimer-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.55rem 2rem;
+  width: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #6b5b47;
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+  transition: background 0.2s;
+  user-select: none;
+}
+.disclaimer-toggle:hover { background: rgba(139,115,85,0.04); }
+.disc-arrow { transition: transform 0.3s; font-size: 0.7rem; }
+.disc-arrow.open { transform: rotate(180deg); }
+.disclaimer-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 2rem;
+}
+.disclaimer-body.open { max-height: 500px; padding: 0 2rem 1.2rem; }
+.disclaimer-body-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.disclaimer-body-inner p { margin-bottom: 0.5rem; }
+.disclaimer-body-inner p:last-child { margin-bottom: 0; }
+
 </style>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
+
+<div class="disclaimer-banner" role="region" aria-label="Important disclaimer">
+  <button type="button" class="disclaimer-toggle" onclick="toggleDisclaimer()" aria-expanded="false" aria-controls="disc-body">
+    <span aria-hidden="true">⚠️</span>
+    <span>Important Disclaimer</span>
+    <span class="disc-arrow" id="disc-arrow" aria-hidden="true">▼</span>
+  </button>
+  <div class="disclaimer-body" id="disc-body">
+    <div class="disclaimer-body-inner">
+      <p>These study resources are provided free of charge for educational purposes only. They are intended as supplemental study aids and should not be used as a substitute for your course textbooks, lecture materials, or the guidance of your instructors.</p>
+      <p>While every effort has been made to ensure accuracy, this content may contain errors, omissions, or information that is out of date. Always verify important facts, formulas, and concepts against your official course materials.</p>
+      <p>No guarantees are made regarding the completeness, accuracy, or reliability of any information presented. Use at your own discretion.</p>
+      <p>These materials are not affiliated with, endorsed by, or officially connected to any university, college, testing organization, or textbook publisher. All content represents the independent work and ideas of the author.</p>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 
 <!-- ═══════════ HERO ═══════════ -->
@@ -1268,110 +1345,62 @@ body {
 <p>These are the questions students ask most often. Click any question to see the answer.</p>
 
 <div class="faq-item">
-<<<<<<< HEAD
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">Is a DO a "real" doctor? <span class="arrow"><span aria-hidden="true">▼</span></span></div>
-=======
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">Is a DO a "real" doctor? <span class="arrow">▼</span></div>
->>>>>>> a4de0d0035999eb68d1cb6914a232a0c6f66e7d6
+<button type="button" class="faq-q" aria-expanded="false">Is a DO a "real" doctor? <span class="arrow"><span aria-hidden="true">▼</span></span></button>
 <div class="faq-a">Yes, absolutely. A DO is a fully licensed physician who can do everything an MD can do: diagnose, prescribe, perform surgery, and specialize in any field. DOs and MDs take the same licensing exams (USMLE and COMLEX), enter the same residency match system, and are recognized identically by hospitals, insurance companies, and patients. The only meaningful difference is that DOs receive additional training in osteopathic manipulative treatment (OMT). The idea that DOs are "lesser" doctors is outdated and simply incorrect.</div>
 </div>
 
 <div class="faq-item">
-<<<<<<< HEAD
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">Can I get into medical school with a low GPA? <span class="arrow"><span aria-hidden="true">▼</span></span></div>
-=======
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">Can I get into medical school with a low GPA? <span class="arrow">▼</span></div>
->>>>>>> a4de0d0035999eb68d1cb6914a232a0c6f66e7d6
+<button type="button" class="faq-q" aria-expanded="false">Can I get into medical school with a low GPA? <span class="arrow"><span aria-hidden="true">▼</span></span></button>
 <div class="faq-a">It depends on how low and what else your application offers. Look at the AAMC table on the "Real Numbers" tab. Students with a 3.0 to 3.19 GPA who score above 510 on the MCAT still have acceptance rates of 34 to 43% at MD schools. DO schools tend to be somewhat more forgiving of lower GPAs if your MCAT is solid and your clinical experience is strong. If your GPA is below 3.0, consider a post-baccalaureate program or a Special Master's Program (SMP) to demonstrate that you can handle rigorous coursework. Also consider DO schools, which may weigh your whole-person profile more heavily. A low GPA does not disqualify you automatically, but it does mean you need to be strategic and realistic about your school list.</div>
 </div>
 
 <div class="faq-item">
-<<<<<<< HEAD
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">Should I take a "growth year" before applying? <span class="arrow"><span aria-hidden="true">▼</span></span></div>
-=======
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">Should I take a "growth year" before applying? <span class="arrow">▼</span></div>
->>>>>>> a4de0d0035999eb68d1cb6914a232a0c6f66e7d6
+<button type="button" class="faq-q" aria-expanded="false">Should I take a "growth year" before applying? <span class="arrow"><span aria-hidden="true">▼</span></span></button>
 <div class="faq-a">For many students, absolutely yes. About 65% of medical school matriculants took at least one year between college and medical school. We prefer the term "growth year" because that is exactly what it is: a year (or two) where you grow. You gain clinical experience, strengthen your MCAT score, conduct research, mature as a person, and enter your program more confident, focused, and competitive. There is nothing "gap" about that. The word "gap" implies something is missing, when in reality you are building something. A growth year is not a sign of weakness. It is often a sign of wisdom and strategy. Use it intentionally.</div>
 </div>
 
 <div class="faq-item">
-<<<<<<< HEAD
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">What is the difference between shadowing and clinical experience? <span class="arrow"><span aria-hidden="true">▼</span></span></div>
-=======
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">What is the difference between shadowing and clinical experience? <span class="arrow">▼</span></div>
->>>>>>> a4de0d0035999eb68d1cb6914a232a0c6f66e7d6
+<button type="button" class="faq-q" aria-expanded="false">What is the difference between shadowing and clinical experience? <span class="arrow"><span aria-hidden="true">▼</span></span></button>
 <div class="faq-a">Shadowing means observing a healthcare professional at work. You watch, you learn, you ask questions, but you do not perform any clinical tasks. This is important for understanding what a career in medicine looks like day to day. Clinical experience (or direct patient care experience) means you are actively involved in patient care: taking vitals, drawing blood, performing CPR, assisting with procedures, transporting patients, or other hands-on activities. For PA school, direct patient care hours are specifically required and tracked. For MD/DO school, both shadowing and clinical experience are expected, but the distinction is less formalized.</div>
 </div>
 
 <div class="faq-item">
-<<<<<<< HEAD
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">How important is research for medical school? <span class="arrow"><span aria-hidden="true">▼</span></span></div>
-=======
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">How important is research for medical school? <span class="arrow">▼</span></div>
->>>>>>> a4de0d0035999eb68d1cb6914a232a0c6f66e7d6
+<button type="button" class="faq-q" aria-expanded="false">How important is research for medical school? <span class="arrow"><span aria-hidden="true">▼</span></span></button>
 <div class="faq-a">It depends on the type of school you are targeting. For research-intensive schools and MD/Ph.D. programs, research is essentially required. For primary-care-focused schools, it is less critical but still a strong addition. For DO schools, research is valued but not typically required. For PA school, research is a nice extra but far less important than clinical hours. For biomedical graduate school, research is the single most important part of your application. As a general rule: if you enjoy research, do it. If you do not, focus your energy on clinical experiences and community service instead.</div>
 </div>
 
 <div class="faq-item">
-<<<<<<< HEAD
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">Can I switch from pre-med to PA (or vice versa) partway through college? <span class="arrow"><span aria-hidden="true">▼</span></span></div>
-=======
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">Can I switch from pre-med to PA (or vice versa) partway through college? <span class="arrow">▼</span></div>
->>>>>>> a4de0d0035999eb68d1cb6914a232a0c6f66e7d6
+<button type="button" class="faq-q" aria-expanded="false">Can I switch from pre-med to PA (or vice versa) partway through college? <span class="arrow"><span aria-hidden="true">▼</span></span></button>
 <div class="faq-a">Yes, and many students do. The prerequisite coursework for MD/DO and PA overlaps significantly (biology, chemistry, anatomy, physiology, biochemistry). The main difference is that PA programs require substantial direct patient care hours, so if you are switching from pre-med to PA, start accumulating those hours immediately. If you are switching from PA to MD/DO, you will need to take the MCAT and may need to add a few courses (like physics or organic chemistry II). Switching is not starting over. It is adjusting direction.</div>
 </div>
 
 <div class="faq-item">
-<<<<<<< HEAD
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">Do I need to major in biology or chemistry? <span class="arrow"><span aria-hidden="true">▼</span></span></div>
-=======
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">Do I need to major in biology or chemistry? <span class="arrow">▼</span></div>
->>>>>>> a4de0d0035999eb68d1cb6914a232a0c6f66e7d6
+<button type="button" class="faq-q" aria-expanded="false">Do I need to major in biology or chemistry? <span class="arrow"><span aria-hidden="true">▼</span></span></button>
 <div class="faq-a">No. You need to complete the prerequisite courses, but your major can be anything. Data from the AAMC shows that humanities and social science majors have comparable (and sometimes higher) acceptance rates to biological science majors, likely because they tend to have higher GPAs and bring unique perspectives to their applications. Major in whatever you love and can excel in. Just make sure you also complete the required science courses.</div>
 </div>
 
 <div class="faq-item">
-<<<<<<< HEAD
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">How do I pay for medical school? <span class="arrow"><span aria-hidden="true">▼</span></span></div>
-=======
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">How do I pay for medical school? <span class="arrow">▼</span></div>
->>>>>>> a4de0d0035999eb68d1cb6914a232a0c6f66e7d6
+<button type="button" class="faq-q" aria-expanded="false">How do I pay for medical school? <span class="arrow"><span aria-hidden="true">▼</span></span></button>
 <div class="faq-a">Most medical students use a combination of federal student loans (Direct Unsubsidized and Grad PLUS loans), scholarships, and personal savings. The average medical school debt for the class of 2023 was approximately $200,000. Some students qualify for service-based loan forgiveness programs like the National Health Service Corps (NHSC) or the Public Service Loan Forgiveness (PSLF) program. Military scholarship programs (HPSP) will pay for medical school in exchange for service commitment. Some states offer loan repayment for physicians who practice in underserved areas. Financial aid offices at medical schools can guide you through the specifics.</div>
 </div>
 
 <div class="faq-item">
-<<<<<<< HEAD
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">I want to help people but I am not sure medicine is right for me. What else is there? <span class="arrow"><span aria-hidden="true">▼</span></span></div>
-=======
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">I want to help people but I am not sure medicine is right for me. What else is there? <span class="arrow">▼</span></div>
->>>>>>> a4de0d0035999eb68d1cb6914a232a0c6f66e7d6
+<button type="button" class="faq-q" aria-expanded="false">I want to help people but I am not sure medicine is right for me. What else is there? <span class="arrow"><span aria-hidden="true">▼</span></span></button>
 <div class="faq-a">There are many professions dedicated to helping people that do not require medical school: nursing (RN, NP), physical therapy, occupational therapy, public health (MPH), genetic counseling, social work, clinical psychology, health administration, biomedical engineering, pharmaceutical science, global health, health policy, medical education, and more. Each of these fields offers meaningful work, good career prospects, and the satisfaction of making a real difference. Do not let a narrow definition of "success" prevent you from exploring paths that might be a better fit for your interests and strengths.</div>
 </div>
 
 <div class="faq-item">
-<<<<<<< HEAD
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">What if I do not get in on my first try? <span class="arrow"><span aria-hidden="true">▼</span></span></div>
-=======
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">What if I do not get in on my first try? <span class="arrow">▼</span></div>
->>>>>>> a4de0d0035999eb68d1cb6914a232a0c6f66e7d6
+<button type="button" class="faq-q" aria-expanded="false">What if I do not get in on my first try? <span class="arrow"><span aria-hidden="true">▼</span></span></button>
 <div class="faq-a">Many successful physicians were not accepted on their first application cycle. If you are not accepted, ask the schools that rejected you for feedback on your application. Identify your weak areas honestly: was it GPA, MCAT, clinical experience, or the personal statement? Then spend a year strengthening those areas and reapply. A reapplication that shows genuine improvement is viewed very favorably by admissions committees. Persistence, when combined with real self-improvement, is one of the strongest qualities a future physician can demonstrate.</div>
 </div>
 
 <div class="faq-item">
-<<<<<<< HEAD
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">How do I know if I should apply to MD, DO, or both? <span class="arrow"><span aria-hidden="true">▼</span></span></div>
-=======
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">How do I know if I should apply to MD, DO, or both? <span class="arrow">▼</span></div>
->>>>>>> a4de0d0035999eb68d1cb6914a232a0c6f66e7d6
+<button type="button" class="faq-q" aria-expanded="false">How do I know if I should apply to MD, DO, or both? <span class="arrow"><span aria-hidden="true">▼</span></span></button>
 <div class="faq-a">If your GPA is above 3.7 and your MCAT is above 510, you are competitive at both MD and DO schools, and many students apply to both to maximize their chances. If your GPA is in the 3.4 to 3.6 range and your MCAT is 500 to 510, DO schools should be a significant part of your strategy, though you can still include MD schools where your profile fits. If your GPA is below 3.4 or your MCAT is below 500, focus heavily on DO schools (and consider whether PA or graduate school might be a better fit). The most important thing is to apply broadly and strategically, not to limit yourself based on prestige.</div>
 </div>
 
 <div class="faq-item">
-<<<<<<< HEAD
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">What are post-baccalaureate and Special Master's Programs (SMP)? <span class="arrow"><span aria-hidden="true">▼</span></span></div>
-=======
-<div class="faq-q" role="button" tabindex="0" aria-expanded="false">What are post-baccalaureate and Special Master's Programs (SMP)? <span class="arrow">▼</span></div>
->>>>>>> a4de0d0035999eb68d1cb6914a232a0c6f66e7d6
+<button type="button" class="faq-q" aria-expanded="false">What are post-baccalaureate and Special Master's Programs (SMP)? <span class="arrow"><span aria-hidden="true">▼</span></span></button>
 <div class="faq-a">A post-baccalaureate pre-med program is designed for students who need to complete prerequisite courses after earning their bachelor's degree, either because they changed career paths or need to improve their academic record. A Special Master's Program (SMP) is a more intensive option, usually a one-year graduate program where you take medical-school-level courses alongside first-year medical students. SMPs are designed to demonstrate that you can handle the rigor of medical school. Strong performance in an SMP can significantly improve your chances, especially if your undergraduate GPA was weak. Some SMPs have linkage agreements with their affiliated medical school, meaning that strong performance guarantees an interview or admission.</div>
 </div>
 
@@ -1390,22 +1419,22 @@ body {
   <div class="resource-card">
     <div class="rc-title">AAMC (Association of American Medical Colleges)</div>
     <div class="rc-desc">The central organization for MD medical education. Home of AMCAS, MCAT registration, and MSAR.</div>
-    <a href="https://www.aamc.org" target="_blank" class="resource-link">aamc.org</a>
+    <a href="https://www.aamc.org" rel="noopener noreferrer" target="_blank" class="resource-link">aamc.org</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">MSAR (Medical School Admission Requirements)</div>
     <div class="rc-desc">Searchable database of every MD school's admissions stats, prerequisites, and tuition. Essential tool ($28/year).</div>
-    <a href="https://mec.aamc.org/msar-ui/" target="_blank" class="resource-link">MSAR Database</a>
+    <a href="https://mec.aamc.org/msar-ui/" rel="noopener noreferrer" target="_blank" class="resource-link">MSAR Database</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">AMCAS Application</div>
     <div class="rc-desc">The centralized application for MD schools. Opens in late May each year.</div>
-    <a href="https://students-residents.aamc.org/applying-medical-school-amcas/applying-medical-school-amcas" target="_blank" class="resource-link">AMCAS Info</a>
+    <a href="https://students-residents.aamc.org/applying-medical-school-amcas/applying-medical-school-amcas" rel="noopener noreferrer" target="_blank" class="resource-link">AMCAS Info</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">AAMC GPA/MCAT Grid (Table A-23)</div>
     <div class="rc-desc">The acceptance rate table by GPA and MCAT ranges, referenced in the "Real Numbers" tab above.</div>
-    <a href="https://www.aamc.org/media/6091/download" target="_blank" class="resource-link">Download PDF</a>
+    <a href="https://www.aamc.org/media/6091/download" rel="noopener noreferrer" target="_blank" class="resource-link">Download PDF</a>
   </div>
 </div>
 
@@ -1414,17 +1443,17 @@ body {
   <div class="resource-card">
     <div class="rc-title">AACOM (American Association of Colleges of Osteopathic Medicine)</div>
     <div class="rc-desc">Central organization for DO medical education, including the application service AACOMAS.</div>
-    <a href="https://www.aacom.org" target="_blank" class="resource-link">aacom.org</a>
+    <a href="https://www.aacom.org" rel="noopener noreferrer" target="_blank" class="resource-link">aacom.org</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">Choose DO Explorer</div>
     <div class="rc-desc">Searchable database of DO schools, similar to MSAR but for osteopathic programs.</div>
-    <a href="https://choosedo.org/explorer/" target="_blank" class="resource-link">Choose DO Explorer</a>
+    <a href="https://choosedo.org/explorer/" rel="noopener noreferrer" target="_blank" class="resource-link">Choose DO Explorer</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">AACOMAS Application</div>
     <div class="rc-desc">The centralized application for DO schools. Opens in early May each year.</div>
-    <a href="https://www.aacom.org/become-a-doctor/apply-to-medical-school" target="_blank" class="resource-link">AACOMAS Info</a>
+    <a href="https://www.aacom.org/become-a-doctor/apply-to-medical-school" rel="noopener noreferrer" target="_blank" class="resource-link">AACOMAS Info</a>
   </div>
 </div>
 
@@ -1433,22 +1462,22 @@ body {
   <div class="resource-card">
     <div class="rc-title">AAPA (American Academy of Physician Associates)</div>
     <div class="rc-desc">National professional organization for PAs. Great resource for understanding the profession.</div>
-    <a href="https://www.aapa.org" target="_blank" class="resource-link">aapa.org</a>
+    <a href="https://www.aapa.org" rel="noopener noreferrer" target="_blank" class="resource-link">aapa.org</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">PAEA (Physician Assistant Education Association)</div>
     <div class="rc-desc">Program directory and admissions data for PA schools nationwide.</div>
-    <a href="https://paeaonline.org" target="_blank" class="resource-link">paeaonline.org</a>
+    <a href="https://paeaonline.org" rel="noopener noreferrer" target="_blank" class="resource-link">paeaonline.org</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">CASPA Application</div>
     <div class="rc-desc">The centralized application for PA programs. Opens in late April each year.</div>
-    <a href="https://caspa.liaisoncas.com" target="_blank" class="resource-link">CASPA Portal</a>
+    <a href="https://caspa.liaisoncas.com" rel="noopener noreferrer" target="_blank" class="resource-link">CASPA Portal</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">ARC-PA (Accreditation Review Commission)</div>
     <div class="rc-desc">Verify that any PA program you are considering is accredited.</div>
-    <a href="https://www.arc-pa.org" target="_blank" class="resource-link">arc-pa.org</a>
+    <a href="https://www.arc-pa.org" rel="noopener noreferrer" target="_blank" class="resource-link">arc-pa.org</a>
   </div>
 </div>
 
@@ -1457,17 +1486,17 @@ body {
   <div class="resource-card">
     <div class="rc-title">NIH NIGMS Training Programs</div>
     <div class="rc-desc">Information about NIH-funded training grants (T32) that fund graduate students in biomedical research.</div>
-    <a href="https://www.nigms.nih.gov/training" target="_blank" class="resource-link">NIGMS Training</a>
+    <a href="https://www.nigms.nih.gov/training" rel="noopener noreferrer" target="_blank" class="resource-link">NIGMS Training</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">NSF GRFP (Graduate Research Fellowship)</div>
     <div class="rc-desc">A prestigious 3-year fellowship for graduate students in STEM fields. Pays stipend and tuition.</div>
-    <a href="https://www.nsfgrfp.org" target="_blank" class="resource-link">NSF GRFP</a>
+    <a href="https://www.nsfgrfp.org" rel="noopener noreferrer" target="_blank" class="resource-link">NSF GRFP</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">AAMC MD-PhD Program Directory</div>
     <div class="rc-desc">For students interested in combined physician-scientist training (typically fully funded).</div>
-    <a href="https://students-residents.aamc.org/md-phd-dual-degree-training/md-phd-dual-degree-training" target="_blank" class="resource-link">MD-PhD Programs</a>
+    <a href="https://students-residents.aamc.org/md-phd-dual-degree-training/md-phd-dual-degree-training" rel="noopener noreferrer" target="_blank" class="resource-link">MD-PhD Programs</a>
   </div>
 </div>
 
@@ -1476,17 +1505,17 @@ body {
   <div class="resource-card">
     <div class="rc-title">MCAT Official Prep (AAMC)</div>
     <div class="rc-desc">Official AAMC practice materials, question packs, and full-length practice exams. Start here.</div>
-    <a href="https://students-residents.aamc.org/prepare-mcat-exam/prepare-mcat-exam" target="_blank" class="resource-link">AAMC MCAT Prep</a>
+    <a href="https://students-residents.aamc.org/prepare-mcat-exam/prepare-mcat-exam" rel="noopener noreferrer" target="_blank" class="resource-link">AAMC MCAT Prep</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">Khan Academy MCAT Resources</div>
     <div class="rc-desc">Free MCAT preparation videos covering all content areas, developed in partnership with AAMC.</div>
-    <a href="https://www.khanacademy.org/test-prep/mcat" target="_blank" class="resource-link">Khan Academy MCAT</a>
+    <a href="https://www.khanacademy.org/test-prep/mcat" rel="noopener noreferrer" target="_blank" class="resource-link">Khan Academy MCAT</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">ETS GRE Official Site</div>
     <div class="rc-desc">Registration, preparation materials, and score information for the GRE.</div>
-    <a href="https://www.ets.org/gre" target="_blank" class="resource-link">GRE at ETS</a>
+    <a href="https://www.ets.org/gre" rel="noopener noreferrer" target="_blank" class="resource-link">GRE at ETS</a>
   </div>
 </div>
 
@@ -1495,17 +1524,17 @@ body {
   <div class="resource-card">
     <div class="rc-title">FAFSA (Free Application for Federal Student Aid)</div>
     <div class="rc-desc">Required for federal loans and most institutional financial aid. File this every year.</div>
-    <a href="https://studentaid.gov/h/apply-for-aid/fafsa" target="_blank" class="resource-link">FAFSA Application</a>
+    <a href="https://studentaid.gov/h/apply-for-aid/fafsa" rel="noopener noreferrer" target="_blank" class="resource-link">FAFSA Application</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">AAMC Financial Aid Resources</div>
     <div class="rc-desc">Information specific to medical school financial aid, loan repayment, and scholarships.</div>
-    <a href="https://students-residents.aamc.org/financial-aid-resources/financial-aid-resources" target="_blank" class="resource-link">AAMC Financial Aid</a>
+    <a href="https://students-residents.aamc.org/financial-aid-resources/financial-aid-resources" rel="noopener noreferrer" target="_blank" class="resource-link">AAMC Financial Aid</a>
   </div>
   <div class="resource-card">
     <div class="rc-title">NHSC Scholarship Program</div>
     <div class="rc-desc">Full scholarship for medical/PA/NP students who commit to practicing in underserved areas.</div>
-    <a href="https://nhsc.hrsa.gov/scholarships" target="_blank" class="resource-link">NHSC Scholarships</a>
+    <a href="https://nhsc.hrsa.gov/scholarships" rel="noopener noreferrer" target="_blank" class="resource-link">NHSC Scholarships</a>
   </div>
 </div>
 </div>
@@ -1570,15 +1599,18 @@ document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', activate);
   q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
 });
+
+function toggleDisclaimer() {
+  const body  = document.getElementById('disc-body');
+  const arrow = document.getElementById('disc-arrow');
+  const btn   = document.querySelector('.disclaimer-toggle');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+  btn.setAttribute('aria-expanded', body.classList.contains('open') ? 'true' : 'false');
+}
+
 </script>
 
-  <div style="max-width: 800px; margin: 40px auto; padding: 20px 30px; background: #fff8e1; border-left: 4px solid #f9a825; border-radius: 8px; font-size: 14px; line-height: 1.6; color: #555;">
-  <div style="font-weight: bold; font-size: 15px; margin-bottom: 10px;"><span aria-hidden="true">⚠️</span> Important Notice</div>
-  <p style="margin: 0 0 10px 0;">These study resources are provided free of charge for educational purposes only. They are intended as supplemental study aids and should not be used as a substitute for your course textbooks, lecture materials, or the guidance of your instructors.</p>
-  <p style="margin: 0 0 10px 0;">While every effort has been made to ensure accuracy, this content may contain errors, omissions, or information that is out of date. Science is constantly evolving, and material that was accurate at the time of writing may no longer reflect current understanding. Always verify important facts, formulas, and concepts against your official course materials.</p>
-  <p style="margin: 0 0 10px 0;">No guarantees are made regarding the completeness, accuracy, or reliability of any information presented on these sites. Use at your own discretion. If you spot an error, we appreciate you letting us know so it can be corrected.</p>
-  <p style="margin: 0 0 10px 0;">These materials are not affiliated with, endorsed by, or officially connected to any university, college, testing organization, or textbook publisher. All content represents the independent work and ideas of the author.</p>
-  <p style="margin: 0;">This resource is provided "as is" without warranty of any kind, express or implied. The author assumes no liability for any errors or for any actions taken based on the information provided here.</p>
-</div>
+
 </body>
 </html>
